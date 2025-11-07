@@ -201,6 +201,51 @@
             margin: 0.25rem 0;
         }
 
+        .css-highlights {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+        .css-highlights h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3b82f6;
+        }
+
+        .css-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .css-feature {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 1.25rem;
+            border-left: 3px solid #10b981;
+        }
+
+        .css-feature h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .css-feature p {
+            color: #64748b;
+            font-size: 0.875rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -215,6 +260,10 @@
             }
 
             .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .css-features {
                 grid-template-columns: 1fr;
             }
 
@@ -289,6 +338,67 @@
                 </div>
                 <div class="feature-item">
                     <span class="feature-text">Self-updating Architecture</span>
+                </div>
+        </div>
+
+        <div class="css-highlights">
+            <h2>🎨 Advanced CSS Processing Engine</h2>
+            <div class="css-features">
+                <div class="css-feature">
+                    <h3>Calc() Expression Optimization</h3>
+                    <p>Fixed stack overflow with nested calculations, ensuring complex responsive layouts render perfectly.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Transform Function Precision</h3>
+                    <p>Corrected radians to degrees conversion in CSS transforms for accurate animations and rotations.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Enhanced Parser Stability</h3>
+                    <p>275+ new parser tests with fixes for subtle bugs, ensuring reliable CSS processing.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Light/Dark Mode Handling</h3>
+                    <p>Advanced color down-leveling and box-shadow minification for modern web standards.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>WebKit Keyframe Support</h3>
+                    <p>Proper parsing of @-webkit-keyframes rules for cross-browser animation compatibility.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Floating Point Precision</h3>
+                    <p>6-decimal precision printing for smaller bundle sizes and accurate rendering.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Modern Vendor Prefixing</h3>
+                    <p>Latest autoprefixer integration for automatic cross-browser compatibility.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>CSS Modules Support</h3>
+                    <p>Fixed :global() selector processing in CSS modules for modular styling.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Safari Infinity Handling</h3>
+                    <p>Proper rendering of infinity values (3.40282e38px) for Safari compatibility.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Custom Property Parser</h3>
+                    <p>Fixed edge cases in CSS custom property parsing for advanced styling.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Code Splitting Optimization</h3>
+                    <p>Fixed CSS imports in dynamic ES modules for optimal bundle splitting.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Color Mixing Functions</h3>
+                    <p>Enhanced calc() and color-mix() support with HSL color space.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Large Value Handling</h3>
+                    <p>Fixed assertion failures with large floating-point values from frameworks.</p>
+                </div>
+                <div class="css-feature">
+                    <h3>Advanced Gradient Support</h3>
+                    <p>Proper parsing of linear-gradient() with turn angle units.</p>
                 </div>
             </div>
         </div>
