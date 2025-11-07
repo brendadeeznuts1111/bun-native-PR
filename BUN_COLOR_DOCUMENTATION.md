@@ -199,21 +199,23 @@ To use `Bun.color` as a macro, import `color` from `"bun"` with the `type: "macr
 ```ts client-side.ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { color } from "bun" with { type: "macro" };
 
-// This call is evaluated during the `bun build` process
+// These calls are resolved during the `bun build` process.
 console.log(color("#f00", "css"));
 console.log(color("hsl(240, 100%, 50%)", "hex"));
+console.log(color("rgba(0, 255, 0, 0.75)", "{rgba}")); // Even object outputs can be stringified if necessary, or transformed into structured data.
 ```
 
-Then, build your client-side code with Bun:
+Then, compile your client-side code with Bun's bundler:
 
 ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build ./client-side.ts --outfile ./dist/client-side.js
 ```
 
-This will produce `dist/client-side.js` with the `Bun.color` calls resolved to their literal string outputs:
+The resulting `dist/client-side.js` will contain the pre-computed color values:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 // dist/client-side.js (Output after bundling)
 console.log("red");
 console.log("#0000ff");
+console.log({ r: 0, g: 255, b: 0, a: 0.75 }); // Object literals are preserved
 ```
