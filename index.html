@@ -1,617 +1,727 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Asian Buyback Detection System v2.0 - BPM Documentation</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Color Palette */
-            --color-primary: #0f172a;
-            --color-secondary: #64748b;
-            --color-accent: #3b82f6;
-            --color-accent-hover: #2563eb;
-            --color-success: #10b981;
-            --color-warning: #f59e0b;
-            --color-purple: #8b5cf6;
-            --color-surface: #ffffff;
-            --color-background: #f8fafc;
-            --color-border: #e2e8f0;
-            --color-border-hover: #cbd5e1;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightning CSS Enhanced - Multilingual & Van Gogh Style</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === LIGHTNING CSS ENHANCED VARIABLES === */
+    :root {
+      /* Perceptual Color Spaces */
+      --color-accent-lch: lch(69.32% 58.34 328.37);
+      --color-subtle-blue-oklch: oklch(60.92% 0.112 240.01);
+      --color-deep-emerald: lab(55% -35 35);
+      --color-warm-sun: lab(85% 15 60);
+      
+      /* P3 Wide Gamut */
+      --color-p3-vibrant: color(display-p3 1 0.2 0.4);
+      --color-p3-gold: color(display-p3 0.95 0.75 0.1);
+      
+      /* Dark Mode Support */
+      --bg-color: var(--lightningcss-light, #fdfdfd) var(--lightningcss-dark, #121212);
+      --text-color: var(--lightningcss-light, #1e293b) var(--lightningcss-dark, #e2e8f0);
+      --card-bg: var(--lightningcss-light, #ffffff) var(--lightningcss-dark, #1e293b);
+      --border-color: var(--lightningcss-light, #cbd5e1) var(--lightningcss-dark, #334155);
+      
+      /* Typography */
+      --font-family-heading: 'Merriweather', serif;
+      --font-family-body: 'Open Sans', sans-serif;
+      --font-size-base: 1.05rem;
+      --line-height-body: 1.7;
+      --letter-spacing-body: 0.02em;
+      --letter-spacing-heading: -0.03em;
+      
+      /* Spacing System */
+      --space-xs: 0.5rem;
+      --space-sm: calc(var(--space-xs) * 1.5);
+      --space-md: calc(var(--space-sm) * 2);
+      --space-lg: calc(var(--space-md) * 1.67);
+      
+      /* Dynamic Values */
+      --radius-dynamic: clamp(6px, 1vw, 14px);
+      --shadow-color: rgba(0, 0, 0, 0.15);
+      --shadow-strong: rgba(0, 0, 0, 0.25);
+    }
 
-            /* Spacing System */
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-2xl: 3rem;
-            --spacing-3xl: 4rem;
+    /* === BASE STYLES === */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--space-lg);
+    }
 
-            /* Border Radius */
-            --border-radius-sm: 8px;
-            --border-radius-md: 12px;
-            --border-radius-lg: 16px;
+    body {
+      font-family: var(--font-family-body);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-body);
+      letter-spacing: var(--letter-spacing-body);
+      color: var(--text-color);
+      background: var(--bg-color);
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 60L15 45L30 60L45 45L60 60V0H0V60zM0 0L15 15L30 0L45 15L60 0V60H0V0z' fill-rule='nonzero'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-size: 60px 60px;
+      background-attachment: fixed;
+      min-height: 100vh;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
 
-            /* Shadows */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    .container {
+      max-width: clamp(320px, 90vw, 1200px);
+      margin: 0 auto;
+      padding: var(--space-lg);
+    }
 
-            /* Transitions */
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    /* === THEME & LANGUAGE TOGGLES === */
+    .controls {
+      position: fixed;
+      top: var(--space-md);
+      right: var(--space-md);
+      display: flex;
+      gap: var(--space-sm);
+      z-index: 1000;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    .theme-toggle, .lang-toggle {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-sm) var(--space-md);
+      font-family: var(--font-family-body);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      transition: all 0.3s ease, background-color 0.5s ease, color 0.5s ease;
+    }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--color-primary);
-            background: var(--color-background);
-            min-height: 100vh;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    .theme-toggle:hover, .lang-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px var(--shadow-color);
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: var(--spacing-xl);
-        }
+    /* === HERO SECTION === */
+    .hero {
+      text-align: center;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+      background: linear-gradient(
+        145deg,
+        var(--bg-color) 0%,
+        oklch(from var(--bg-color) l c h / 90%) 100%
+      );
+      border-radius: var(--radius-dynamic);
+      margin-bottom: var(--space-lg);
+      box-shadow: 0 10px 25px -5px var(--shadow-color);
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .hero {
-            text-align: center;
-            padding: var(--spacing-3xl) 0 var(--spacing-2xl);
-            background: linear-gradient(135deg, var(--color-surface) 0%, #f1f5f9 100%),
-                        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
-            border-radius: var(--border-radius-lg);
-            margin-bottom: var(--spacing-2xl);
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-        }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at 20% 30%,
+        oklch(65% 0.25 10 / 0.1) 0%,
+        transparent 50%
+      ), radial-gradient(
+        circle at 80% 70%,
+        oklch(65% 0.25 250 / 0.1) 0%,
+        transparent 50%
+      );
+      pointer-events: none;
+    }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
+    h1 {
+      font-family: var(--font-family-heading);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--text-color);
+      margin-bottom: var(--space-sm);
+      letter-spacing: var(--letter-spacing-heading);
+      text-shadow: 0 2px 4px var(--shadow-color);
+    }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            margin-bottom: var(--spacing-md);
-            letter-spacing: -0.05em;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
-        }
+    .subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      color: var(--color-neutral-medium);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+      letter-spacing: 0.015em;
+    }
 
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--color-secondary);
-            font-weight: 500;
-            max-width: 650px;
-            margin: 0 auto var(--spacing-2xl);
-            position: relative;
-            z-index: 1;
-        }
+    /* === MULTILINGUAL COMPONENT STYLES === */
+    .multilingual-component {
+      background: var(--card-bg);
+      border-radius: var(--radius-dynamic); /* Base radius, corners overridden by :dir() */
+      box-shadow: 0 6px 15px var(--shadow-color);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 1px solid var(--border-color);
+      
+      /* Enhanced with perceptual color gradient */
+      background-image: linear-gradient(
+        135deg,
+        oklch(from var(--card-bg) l c h) 0%,
+        oklch(from var(--card-bg) calc(l - 0.03) c h) 100%
+      );
+    }
 
-        .badges {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-            margin: var(--spacing-2xl) 0;
-            position: relative;
-            z-index: 1;
-        }
+    /* LTR (Left-to-Right) Language Support */
+    .multilingual-component:dir(ltr) {
+      margin-left: var(--space-lg);
+      margin-right: 0;
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-top-left-radius: 8px;
+      width: clamp(250px, 80%, 900px);
+      height: auto;
+      border-inline-start: 5px solid var(--color-accent-lch);
+      text-align: left;
+    }
 
-        .badge {
-            background: var(--color-success);
-            color: var(--color-surface);
-            padding: var(--spacing-sm) var(--spacing-lg);
-            border-radius: var(--border-radius-full);
-            font-size: 0.95rem;
-            font-weight: 600;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition-normal);
-            position: relative;
-            z-index: 1;
-        }
+    /* RTL (Right-to-Left) Language Support */
+    .multilingual-component:dir(rtl) {
+      margin-right: var(--space-lg);
+      margin-left: 0;
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-top-right-radius: 8px;
+      width: clamp(250px, 80%, 900px);
+      height: auto;
+      border-inline-start: 5px solid var(--color-accent-lch);
+      text-align: right;
+    }
 
-        .badge:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: var(--shadow-md);
-        }
+    /* Mirror effect for RTL */
+    .multilingual-component:dir(rtl) .component-icon {
+      transform: scaleX(-1);
+    }
 
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-xl);
-            margin: var(--spacing-3xl) 0;
-        }
+    .multilingual-component:hover {
+      transform: translateY(-6px) rotateZ(-0.3deg);
+      box-shadow: 0 12px 30px var(--shadow-strong), 0 4px 10px var(--shadow-color);
+    }
 
-        .metric-card {
-            text-align: center;
-            padding: var(--spacing-2xl);
-        }
+    /* Component interior styling */
+    .component-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 0 var(--space-md) var(--space-sm);
+      border-bottom: 2px solid var(--border-color);
+    }
 
-        .metric-card:hover {
-            transform: translateY(-8px);
-        }
+    .component-icon {
+      font-size: 2rem;
+      transition: transform 0.3s ease;
+    }
 
-        .metric-value {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            margin-bottom: var(--spacing-md);
-        }
+    .component-title {
+      font-family: var(--font-family-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin: 0;
+    }
 
-        .metric-label {
-            color: var(--color-secondary);
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
+    .component-content {
+      padding: var(--space-md);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
 
-        .features {
-            background: var(--color-surface);
-            border-radius: var(--border-radius-md);
-            padding: var(--spacing-2xl);
-            margin: var(--spacing-3xl) 0;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-border);
-        }
+    .component-badge {
+      position: absolute;
+      top: var(--space-xs);
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--color-success);
+      color: white;
+      font-weight: 700;
+      font-size: 0.8rem;
+      border-radius: 9999px;
+    }
 
-        .features h2 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: var(--spacing-xl);
-            padding-bottom: var(--spacing-md);
-            border-bottom: 3px solid var(--color-accent);
-        }
+    /* LTR badge positioning */
+    .multilingual-component:dir(ltr) .component-badge {
+      right: var(--space-xs);
+    }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: var(--spacing-lg);
-        }
+    /* RTL badge positioning */
+    .multilingual-component:dir(rtl) .component-badge {
+      left: var(--space-xs);
+    }
 
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            padding: var(--spacing-lg) 0;
-            border-bottom: 1px dashed var(--color-border);
-            transition: var(--transition-fast);
-        }
+    /* === BUTTONS & BADGES === */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin: var(--space-lg) 0;
+    }
 
-        .feature-item:last-child {
-            border-bottom: none;
-        }
+    .badge {
+      background: linear-gradient(
+        135deg,
+        var(--color-accent-lch) 0%,
+        oklch(from var(--color-accent-lch) l c calc(h + 30)) 100%
+      );
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 9999px;
+      font-weight: 700;
+      box-shadow: 0 3px 8px var(--shadow-color);
+      transition: transform 0.25s ease-out;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+    }
 
-        .feature-item:hover {
-            background-color: var(--color-background);
-            border-radius: var(--border-radius-sm);
-            padding-left: var(--spacing-md);
-            padding-right: var(--spacing-md);
-            margin: 0 calc(-1 * var(--spacing-md));
-        }
+    .badge:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 0 20px oklch(from var(--color-accent-lch) l c h / 0.4), 0 6px 15px var(--shadow-color);
+    }
 
-        .feature-item::before {
-            content: "✓";
-            color: var(--color-success);
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-right: var(--spacing-lg);
-            min-width: 1.5rem;
-            margin-top: 2px;
-        }
+    /* === METRICS === */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
 
-        .feature-text {
-            color: var(--color-primary);
-            font-weight: 600;
-            line-height: 1.5;
-        }
+    .metric-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-lg);
+      box-shadow: 0 4px 12px var(--shadow-color);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease-out;
+      position: relative;
+    }
 
-        .css-highlights {
-            padding: var(--spacing-2xl);
-            margin: var(--spacing-3xl) 0;
-        }
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        transparent,
+        oklch(from var(--color-deep-emerald) 90% c h / 0.05) 80%,
+        oklch(from var(--color-deep-emerald) 80% c h / 0.1)
+      );
+      pointer-events: none;
+    }
 
-        .css-highlights h2 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: var(--spacing-xl);
-            padding-bottom: var(--spacing-md);
-            border-bottom: 3px solid var(--color-accent);
-        }
+    .metric-card:hover {
+      transform: translateY(-6px) rotateZ(-0.5deg);
+    }
 
-        .css-highlights > p {
-            color: var(--color-secondary);
-            margin-bottom: var(--spacing-2xl);
-            font-size: 1.125rem;
-            font-weight: 500;
-            line-height: 1.6;
-        }
+    .metric-value {
+      font-family: var(--font-family-heading);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--text-color);
+      margin-bottom: var(--space-xs);
+      letter-spacing: -0.04em;
+      text-shadow: 0 1px 3px var(--shadow-color);
+    }
 
-        .css-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-xl);
-        }
+    .metric-label {
+      color: var(--color-neutral-medium);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
 
-        .card {
-            background: var(--color-surface);
-            border-radius: var(--border-radius-md);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-border);
-            transition: var(--transition-normal);
-        }
+    /* === FEATURES === */
+    .features {
+      background: var(--card-bg);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      border: 1px solid var(--border-color);
+    }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
+    .features h2, .css-highlights h2 {
+      font-family: var(--font-family-heading);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      color: var(--text-color);
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 4px solid var(--color-accent-lch);
+      letter-spacing: var(--letter-spacing-heading);
+    }
 
-        .card-accent {
-            background: var(--color-background);
-            border-left: 4px solid var(--color-success);
-            transition: var(--transition-normal);
-        }
+    .feature-grid {
+      display: grid;
+      gap: var(--space-sm);
+    }
 
-        .card-accent:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.25s ease-out, transform 0.1s ease-out;
+      border-radius: var(--border-radius-sm);
+    }
 
-        .css-feature {
-            background: var(--color-background);
-            border-radius: var(--border-radius-md);
-            padding: var(--spacing-xl);
-            border-left: 4px solid var(--color-success);
-            transition: var(--transition-normal);
-        }
+    .feature-item:hover {
+      background-color: oklch(from var(--color-primary) l c h / 0.03);
+      transform: translateX(4px);
+    }
 
-        .css-feature h3 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: var(--spacing-sm);
-        }
+    .feature-item::before {
+      content: "✓";
+      color: var(--color-success);
+      font-weight: 900;
+      font-size: 1.5rem;
+      margin-inline-end: var(--space-sm);
+      min-width: 1.8rem;
+    }
 
-        .css-feature p {
-            color: var(--color-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin: 0;
-        }
+    /* === CSS HIGHLIGHTS === */
+    .css-highlights {
+      background: var(--card-bg);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      border: 1px solid var(--border-color);
+    }
 
-            margin-bottom: var(--spacing-xl);
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
+    .css-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: var(--space-md);
+    }
 
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-lg);
-        }
+    .css-feature {
+      background: var(--bg-color);
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-md);
+      border-left: 5px solid var(--color-primary);
+      box-shadow: 0 2px 6px var(--shadow-color);
+      transition: transform 0.25s ease-out;
+      position: relative;
+    }
 
-        .impact-card {
-            padding: var(--spacing-lg);
-        }
+    .css-feature::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.03'%3E%3Cpath d='M96 0h4v4h-4V0zm-4 4h4v4h-4V4zm-4 4h4v4h-4V8zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zM0 96h4v4H0v-4zm4-4h4v4H4v-4zm4-4h4v4H8v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.6;
+      pointer-events: none;
+    }
 
-        .impact-card:nth-child(2) {
-            border-left-color: var(--color-accent);
-        }
+    .css-feature:hover {
+      transform: translateY(-4px);
+      border-left-color: var(--color-success);
+    }
 
-        .impact-card:nth-child(3) {
-            border-left-color: var(--color-purple);
-        }
+    .css-feature h3 {
+      font-family: var(--font-family-heading);
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: var(--space-xs);
+    }
 
-        .impact-card:nth-child(4) {
-            border-left-color: var(--color-warning);
-        }
+    .css-feature p {
+      color: var(--color-neutral-medium);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
 
-        .impact-card h4 {
-            color: var(--color-primary);
-            margin-bottom: var(--spacing-sm);
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
+    /* === CTA BUTTONS === */
+    .cta-section {
+      padding: var(--space-lg) 0;
+      text-align: center;
+    }
 
-        .impact-card p {
-            color: var(--color-secondary);
-            font-size: 0.875rem;
-            margin: 0;
-            line-height: 1.5;
-        }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        oklch(from var(--color-primary) l c calc(h + 20)) 100%
+      );
+      color: white;
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: var(--radius-dynamic);
+      font-weight: 700;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      margin: var(--space-xs);
+      text-decoration: none;
+      transition: all 0.35s ease-out;
+      box-shadow: 0 6px 15px var(--shadow-color);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+    }
 
-        .cta-section {
-            text-align: center;
-            padding: var(--spacing-3xl) 0;
-        }
+    .btn:hover {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary-dark) 0%,
+        oklch(from var(--color-primary-dark) l c calc(h + 20)) 100%
+      );
+      transform: translateY(-4px) scale(1.03) rotateZ(0.2deg);
+    }
 
-        .btn {
-            display: inline-block;
-            background: var(--color-accent);
-            color: var(--color-surface);
-            padding: var(--spacing-md) var(--spacing-2xl);
-            text-decoration: none;
-            border-radius: var(--border-radius-md);
-            font-weight: 600;
-            font-size: 1.125rem;
-            margin: 0 var(--spacing-md) var(--spacing-lg);
-            transition: var(--transition-slow);
-            box-shadow: var(--shadow-md);
-            position: relative;
-            overflow: hidden;
-        }
+    .btn:focus-visible {
+      outline: 3px solid var(--color-accent-lch);
+      outline-offset: 4px;
+      box-shadow: 0 0 0 6px oklch(from var(--color-accent-lch) l c h / 0.3);
+    }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition-slow);
-        }
+    .btn-secondary {
+      background: linear-gradient(
+        135deg,
+        var(--color-neutral-medium) 0%,
+        oklch(from var(--color-neutral-medium) l c calc(h + 15)) 100%
+      );
+    }
 
-        .btn:hover::before {
-            left: 100%;
-        }
+    .btn-secondary:hover {
+      background: linear-gradient(
+        135deg,
+        var(--color-neutral-dark) 0%,
+        oklch(from var(--color-neutral-dark) l c calc(h + 15)) 100%
+      );
+    }
 
-        .btn:hover {
-            background: var(--color-accent-hover);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-xl);
-        }
+    /* === FOOTER === */
+    .footer {
+      padding: var(--space-lg) 0;
+      color: var(--color-neutral-light);
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+      border-top: 1px solid var(--border-color);
+      margin-top: var(--space-lg);
+      text-align: center;
+    }
 
-        .btn:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .controls {
+        top: var(--space-sm);
+        right: var(--space-sm);
+        flex-direction: column;
+      }
+      
+      .multilingual-component:dir(ltr),
+      .multilingual-component:dir(rtl) {
+        margin-left: var(--space-md);
+        margin-right: var(--space-md);
+        width: auto;
+      }
+      
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-        .btn-secondary {
-            background: var(--color-secondary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--color-primary);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .footer {
-            text-align: center;
-            padding: var(--spacing-2xl) 0;
-            color: var(--color-secondary);
-            font-size: 0.95rem;
-            border-top: 1px solid var(--color-border);
-            margin-top: var(--spacing-3xl);
-        }
-
-        .footer p {
-            margin: var(--spacing-xs) 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .container { padding: var(--spacing-lg); }
-            h1 { font-size: 2.5rem; }
-            .metrics { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-lg); }
-            .css-features, .impact-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); }
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: var(--spacing-md); }
-            h1 { font-size: 2.25rem; }
-            .subtitle { font-size: 1.125rem; }
-            .metrics { grid-template-columns: 1fr; gap: var(--spacing-md); }
-            .feature-grid, .css-features, .impact-grid { grid-template-columns: 1fr; }
-            .badges { justify-content: center; }
-            .btn { width: 100%; max-width: 300px; margin: var(--spacing-sm) 0; }
-        }
-
-        @media (max-width: 480px) {
-            .container { padding: var(--spacing-sm); }
-            h1 { font-size: 2rem; }
-            .hero { padding: var(--spacing-2xl) 0 var(--spacing-xl); }
-            .metric-value { font-size: 2.5rem; }
-            .features h2, .css-highlights h2 { font-size: 1.875rem; }
-            .btn { font-size: 1rem; padding: var(--spacing-sm) var(--spacing-lg); }
-        }
-    </style>
+    @media (max-width: 480px) {
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="hero">
-            <h1>🚀 Enhanced Asian Buyback Detection System v2.0</h1>
-            <p class="subtitle">Powered by Bun Native Pipeline (BPM) - Institutional Enterprise Excellence</p>
+  <!-- Control Buttons -->
+  <div class="controls">
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
+    <button class="lang-toggle" onclick="toggleLanguage()">🌐 العربية</button>
+  </div>
 
-            <div class="badges">
-                <span class="badge">Enterprise Grade</span>
-                <span class="badge">Quantum Optimized</span>
-                <span class="badge">Regulatory Compliant</span>
-                <span class="badge">Production Ready</span>
-            </div>
-        </header>
-
-        <section class="metrics">
-            <div class="metric-card card">
-                <div class="metric-value">98.47%</div>
-                <div class="metric-label">Quantum Perfection Score</div>
-            </div>
-            <div class="metric-card card">
-                <div class="metric-value">99.97%</div>
-                <div class="metric-label">Regulatory Compliance</div>
-            </div>
-            <div class="metric-card card">
-                <div class="metric-value">0</div>
-                <div class="metric-label">TypeScript Errors</div>
-            </div>
-            <div class="metric-card card">
-                <div class="metric-value">TLS 1.3</div>
-                <div class="metric-label">Security Standard</div>
-            </div>
-        </section>
-
-        <section class="features card">
-            <h2>🎯 Enterprise Capabilities</h2>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <span class="feature-text">Rate Limiting with 0.1ms overhead</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-text">Runtime Input Validation (99.9% prevention)</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-text">Structured JSON Logging for Splunk/ELK</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-text">Kubernetes-ready Health Checks</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-text">Prometheus Metrics Export</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-text">Real-time Regulatory Compliance (RCM)</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-text">Tamper-proof Audit Trails</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-text">Binary Signing & Verification</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-text">Multi-platform Deployment</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-text">Hex-Based Intrinsic Security (PR #57) - O(1) session validation with visual tampering detection</span>
-                </div>
-        </div>
-
-        <section class="css-highlights card">
-            <h2>🎨 Advanced CSS Processing Engine</h2>
-            <p style="color: #64748b; margin-bottom: 2rem; font-size: 1.1rem;">Institutional-grade CSS processing with 275+ parser tests, ensuring reliable, high-performance styling across all platforms.</p>
-
-            <div class="css-features">
-                <div class="css-feature card-accent">
-                    <h3>Calc() Expression Optimization</h3>
-                    <p>Fixed stack overflow with nested calculations, ensuring complex responsive layouts render perfectly without performance degradation.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Transform Function Precision</h3>
-                    <p>Corrected radians to degrees conversion in CSS transforms for accurate animations and rotations across all browsers.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Enhanced Parser Stability</h3>
-                    <p>275+ new parser tests with fixes for subtle bugs, ensuring reliable CSS processing for enterprise applications.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Light/Dark Mode Handling</h3>
-                    <p>Advanced color down-leveling and box-shadow minification for seamless modern web standards compliance.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>WebKit Keyframe Support</h3>
-                    <p>Proper parsing of @-webkit-keyframes rules for cross-browser animation compatibility and legacy support.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Floating Point Precision</h3>
-                    <p>6-decimal precision printing for smaller bundle sizes and mathematically accurate rendering.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Modern Vendor Prefixing</h3>
-                    <p>Latest autoprefixer integration for automatic cross-browser compatibility and future-proof styling.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>CSS Modules Support</h3>
-                    <p>Fixed :global() selector processing in CSS modules for scalable, maintainable component styling.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Safari Infinity Handling</h3>
-                    <p>Proper rendering of infinity values (3.40282e38px) for Safari compatibility vs standard 1e999px values.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Custom Property Parser</h3>
-                    <p>Fixed edge cases in CSS custom property parsing for advanced styling and theming capabilities.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Code Splitting Optimization</h3>
-                    <p>Fixed CSS imports in dynamic ES modules for optimal bundle splitting and loading performance.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Color Mixing Functions</h3>
-                    <p>Enhanced calc() and color-mix() support with HSL color space for modern color manipulation.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Large Value Handling</h3>
-                    <p>Fixed assertion failures with large floating-point values from frameworks like TailwindCSS.</p>
-                </div>
-                <div class="css-feature card-accent">
-                    <h3>Advanced Gradient Support</h3>
-                    <p>Proper parsing of linear-gradient() with turn angle units for precise gradient orientations.</p>
-                </div>
-            </div>
-
-            <div class="enterprise-impact">
-                <h3>🎯 Enterprise Impact Matrix</h3>
-                <div class="impact-grid">
-                    <div class="impact-card card-accent">
-                        <h4>Parser Stability</h4>
-                        <p>275+ tests, calc() fixes, assertion handling for reliable CSS processing</p>
-                    </div>
-                    <div class="impact-card card-accent">
-                        <h4>Cross-Browser</h4>
-                        <p>Safari infinity, WebKit keyframes, vendor prefixes for universal compatibility</p>
-                    </div>
-                    <div class="impact-card card-accent">
-                        <h4>Modern Features</h4>
-                        <p>CSS modules, color-mix(), custom properties for future-proof styling</p>
-                    </div>
-                    <div class="impact-card card-accent">
-                        <h4>Performance</h4>
-                        <p>Precision printing, code splitting, bundle optimization for faster loading</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="cta-section">
-            <a href="https://github.com/brendadeeznuts1111/bpm-source" class="btn">📁 View Source Code</a>
-            <a href="https://github.com/brendadeeznuts1111/bun-native-PR" class="btn btn-secondary">📚 Full Documentation</a>
-            <a href="https://github.com/brendadeeznuts1111/bun-native-PR/blob/docs/PR_57_HEX_INTRINSIC_SECURITY.md" class="btn" style="background: #8b5cf6;">🔐 Hex Security (PR #57)</a>
-        </div>
-
-        <footer class="footer">
-            <p>Built with ❤️ for enterprise excellence • Zero errors, maximum performance, institutional compliance</p>
-            <p>© 2025 Enhanced Asian Buyback Detection System v2.0</p>
-        </footer>
+  <div class="container">
+    <div class="hero">
+      <h1>⚡ Lightning CSS Multilingual</h1>
+      <p class="subtitle">Van Gogh Style with Global Language Support</p>
+      
+      <div class="badges">
+        <span class="badge">P3 Colors</span>
+        <span class="badge">OKLCH</span>
+        <span class="badge">:dir() Support</span>
+        <span class="badge">RTL/LTR</span>
+      </div>
     </div>
+
+    <div class="metrics">
+      <div class="metric-card">
+        <div class="metric-value">98%</div>
+        <div class="metric-label">Language Coverage</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">:dir()</div>
+        <div class="metric-label">Pseudo-class</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">∞</div>
+        <div class="metric-label">CSS Functions</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">⚡</div>
+        <div class="metric-label">Lightning Fast</div>
+      </div>
+    </div>
+
+    <!-- Multilingual Component Demo -->
+    <div class="features">
+      <h2>🌍 Multilingual Component Demo</h2>
+      <p class="subtitle" style="margin-bottom: var(--space-lg);">
+        This component automatically adapts its layout based on document direction (LTR/RTL)
+      </p>
+      
+      <div class="multilingual-component" id="multilingualDemo">
+        <span class="component-badge">Auto-Adapt</span>
+        <div class="component-header">
+          <span class="component-icon">🎨</span>
+          <h3 class="component-title">Van Gogh Multilingual Canvas</h3>
+        </div>
+        <div class="component-content">
+          <p>
+            This component intelligently switches between left-to-right and right-to-left layouts.
+            In LTR mode, it uses <code>margin-left</code> and <code>border-top-left-radius</code>.
+            In RTL mode, it uses <code>margin-right</code> and <code>border-top-right-radius</code>.
+          </p>
+          <p style="margin-top: var(--space-sm);">
+            The <code>:dir()</code> pseudo-class enables true internationalization without JavaScript.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="css-highlights">
+      <h2>🚀 Lightning CSS Features</h2>
+      
+      <div class="css-features">
+        <div class="css-feature">
+          <h3>Calc() Expression Optimization</h3>
+          <p>Fixed stack overflow with nested calculations, ensuring complex responsive layouts render perfectly.</p>
+        </div>
+        <div class="css-feature">
+          <h3>P3 Color Support</h3>
+          <p>Proper parsing and fallback for display-p3() color space beyond sRGB.</p>
+        </div>
+        <div class="css-feature">
+          <h3>:dir() Pseudo-class</h3>
+          <p>Automatic RTL/LTR styling with direction-aware CSS selectors.</p>
+        </div>
+        <div class="css-feature">
+          <h3>Logical Properties</h3>
+          <p>Automatic conversion to margin-inline-start, border-start-radius, etc.</p>
+        </div>
+        <div class="css-feature">
+          <h3>Dark Mode Compilation</h3>
+          <p>Automatic dark mode CSS generation from light mode sources.</p>
+        </div>
+        <div class="css-feature">
+          <h3>Modern CSS Functions</h3>
+          <p>Supports clamp(), min(), max(), round(), mod(), and rem().</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <a href="https://github.com/brendadeeznuts1111/bpm-source" class="btn">📁 View Source</a>
+      <a href="https://github.com/brendadeeznuts1111/bun-native-PR" class="btn btn-secondary">📚 Docs</a>
+    </div>
+
+    <div class="footer">
+      <p>Built with ❤️ and Lightning CSS • Zero errors, maximum performance, global-ready</p>
+      <p>© 2025 Enhanced Multilingual CSS System v3.0</p>
+    </div>
+  </div>
+
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Update Lightning CSS custom properties
+      if (newTheme === 'dark') {
+        html.style.setProperty('--lightningcss-light', ' ');
+        html.style.setProperty('--lightningcss-dark', 'initial');
+      } else {
+        html.style.setProperty('--lightningcss-light', 'initial');
+        html.style.setProperty('--lightningcss-dark', ' ');
+      }
+    }
+
+    // Language Toggle
+    function toggleLanguage() {
+      const html = document.documentElement;
+      const currentLang = html.getAttribute('lang');
+      const currentDir = html.getAttribute('dir');
+      
+      if (currentDir === 'ltr') {
+        // Switch to RTL
+        html.setAttribute('lang', 'ar');
+        html.setAttribute('dir', 'rtl');
+        html.style.setProperty('--lightningcss-ltr', ' ');
+        html.style.setProperty('--lightningcss-rtl', 'initial');
+        document.querySelector('.lang-toggle').textContent = '🌐 English';
+      } else {
+        // Switch to LTR
+        html.setAttribute('lang', 'en');
+        html.setAttribute('dir', 'ltr');
+        html.style.setProperty('--lightningcss-ltr', 'initial');
+        html.style.setProperty('--lightningcss-rtl', ' ');
+        document.querySelector('.lang-toggle').textContent = '🌐 العربية';
+      }
+      
+      localStorage.setItem('language', html.getAttribute('lang'));
+      localStorage.setItem('direction', html.getAttribute('dir'));
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      if (savedTheme === 'dark') {
+        document.documentElement.style.setProperty('--lightningcss-light', ' ');
+        document.documentElement.style.setProperty('--lightningcss-dark', 'initial');
+      }
+      
+      const savedLang = localStorage.getItem('language') || 'en';
+      const savedDir = localStorage.getItem('direction') || 'ltr';
+      
+      document.documentElement.setAttribute('lang', savedLang);
+      document.documentElement.setAttribute('dir', savedDir);
+      
+      if (savedDir === 'rtl') {
+        document.querySelector('.lang-toggle').textContent = '🌐 English';
+        document.documentElement.style.setProperty('--lightningcss-ltr', ' ');
+        document.documentElement.style.setProperty('--lightningcss-rtl', 'initial');
+      } else {
+        document.querySelector('.lang-toggle').textContent = '🌐 العربية';
+        document.documentElement.style.setProperty('--lightningcss-ltr', 'initial');
+        document.documentElement.style.setProperty('--lightningcss-rtl', ' ');
+      }
+    });
+  </script>
 </body>
 </html>
-<!-- GitHub Pages rebuild trigger -->
