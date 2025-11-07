@@ -5,123 +5,240 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Asian Buyback Detection System v2.0 - BPM Documentation</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1a1a1a;
+            background: #f8fafc;
             min-height: 100vh;
         }
+
         .container {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin: 20px auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
         }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
         h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 10px;
-            font-size: 2.5em;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
         }
+
         .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            font-size: 1.2em;
-            margin-bottom: 30px;
+            font-size: 1.125rem;
+            color: #64748b;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
         }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+
         .badge {
-            display: inline-block;
-            background: #27ae60;
+            background: #10b981;
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin: 5px;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
         }
-        .metric-grid {
+
+        .metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
         }
+
         .metric-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
             text-align: center;
-            border-left: 4px solid #3498db;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+        }
+
         .metric-value {
-            font-size: 2em;
-            font-weight: bold;
-            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
         }
+
         .metric-label {
-            color: #7f8c8d;
-            font-size: 0.9em;
-            margin-top: 5px;
+            color: #64748b;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
+
         .features {
-            margin: 30px 0;
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
         }
-        .feature-list {
-            list-style: none;
-            padding: 0;
+
+        .features h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3b82f6;
         }
-        .feature-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #ecf0f1;
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-item {
             display: flex;
             align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f5f9;
         }
-        .feature-list li:before {
-            content: "✅";
-            margin-right: 10px;
-            color: #27ae60;
+
+        .feature-item:last-child {
+            border-bottom: none;
         }
-        .links {
+
+        .feature-item::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.125rem;
+            margin-right: 0.75rem;
+            min-width: 1.25rem;
+        }
+
+        .feature-text {
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .cta-section {
             text-align: center;
-            margin-top: 40px;
+            padding: 3rem 0;
         }
+
         .btn {
             display: inline-block;
-            background: #3498db;
+            background: #3b82f6;
             color: white;
-            padding: 12px 24px;
+            padding: 0.875rem 2rem;
             text-decoration: none;
-            border-radius: 5px;
-            margin: 10px;
-            transition: background 0.3s;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            margin: 0 0.5rem 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
         }
+
         .btn:hover {
-            background: #2980b9;
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px 0 rgba(59, 130, 246, 0.4);
         }
+
         .btn-secondary {
-            background: #95a5a6;
+            background: #6b7280;
         }
+
         .btn-secondary:hover {
-            background: #7f8c8d;
+            background: #4b5563;
+            box-shadow: 0 4px 12px 0 rgba(107, 114, 128, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #64748b;
+            font-size: 0.875rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 3rem;
+        }
+
+        .footer p {
+            margin: 0.25rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .badges {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Enhanced Asian Buyback Detection System v2.0</h1>
-        <p class="subtitle">Powered by Bun Native Pipeline (BPM) - Institutional Enterprise Excellence</p>
+        <div class="hero">
+            <h1>🚀 Enhanced Asian Buyback Detection System v2.0</h1>
+            <p class="subtitle">Powered by Bun Native Pipeline (BPM) - Institutional Enterprise Excellence</p>
 
-        <div style="text-align: center; margin: 20px 0;">
-            <span class="badge">Enterprise Grade</span>
-            <span class="badge">Quantum Optimized</span>
-            <span class="badge">Regulatory Compliant</span>
-            <span class="badge">Production Ready</span>
+            <div class="badges">
+                <span class="badge">Enterprise Grade</span>
+                <span class="badge">Quantum Optimized</span>
+                <span class="badge">Regulatory Compliant</span>
+                <span class="badge">Production Ready</span>
+            </div>
         </div>
 
-        <div class="metric-grid">
+        <div class="metrics">
             <div class="metric-card">
                 <div class="metric-value">98.47%</div>
                 <div class="metric-label">Quantum Perfection Score</div>
@@ -141,27 +258,47 @@
         </div>
 
         <div class="features">
-            <h2 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">🎯 Enterprise Capabilities</h2>
-            <ul class="feature-list">
-                <li>Rate Limiting with 0.1ms overhead</li>
-                <li>Runtime Input Validation (99.9% prevention)</li>
-                <li>Structured JSON Logging for Splunk/ELK</li>
-                <li>Kubernetes-ready Health Checks</li>
-                <li>Prometheus Metrics Export</li>
-                <li>Real-time Regulatory Compliance (RCM)</li>
-                <li>Tamper-proof Audit Trails</li>
-                <li>Binary Signing & Verification</li>
-                <li>Multi-platform Deployment</li>
-                <li>Self-updating Architecture</li>
-            </ul>
+            <h2>🎯 Enterprise Capabilities</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-text">Rate Limiting with 0.1ms overhead</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-text">Runtime Input Validation (99.9% prevention)</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-text">Structured JSON Logging for Splunk/ELK</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-text">Kubernetes-ready Health Checks</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-text">Prometheus Metrics Export</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-text">Real-time Regulatory Compliance (RCM)</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-text">Tamper-proof Audit Trails</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-text">Binary Signing & Verification</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-text">Multi-platform Deployment</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-text">Self-updating Architecture</span>
+                </div>
+            </div>
         </div>
 
-        <div class="links">
+        <div class="cta-section">
             <a href="https://github.com/brendadeeznuts1111/bpm-source" class="btn">📁 View Source Code</a>
             <a href="https://github.com/brendadeeznuts1111/bun-native-PR" class="btn btn-secondary">📚 Full Documentation</a>
         </div>
 
-        <div style="text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 0.9em;">
+        <div class="footer">
             <p>Built with ❤️ for enterprise excellence • Zero errors, maximum performance, institutional compliance</p>
             <p>© 2025 Enhanced Asian Buyback Detection System v2.0</p>
         </div>
