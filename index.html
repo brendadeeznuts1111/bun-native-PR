@@ -3,50 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lightning CSS Enhanced - Multilingual & Van Gogh Style</title>
+  <title>⚡ Lightning CSS Enhanced v4.0 - Advanced Multilingual & Van Gogh Style</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* === LIGHTNING CSS ENHANCED VARIABLES === */
+    /* === ADVANCED LIGHTNING CSS ENHANCED VARIABLES === */
     :root {
-      /* Perceptual Color Spaces */
+      /* Enhanced Perceptual Color Spaces */
       --color-accent-lch: lch(69.32% 58.34 328.37);
       --color-subtle-blue-oklch: oklch(60.92% 0.112 240.01);
       --color-deep-emerald: lab(55% -35 35);
       --color-warm-sun: lab(85% 15 60);
+      --color-vibrant-purple: oklch(65% 0.25 280);
+      --color-coral-pink: oklch(75% 0.18 20);
       
-      /* P3 Wide Gamut */
+      /* P3 Wide Gamut Enhanced */
       --color-p3-vibrant: color(display-p3 1 0.2 0.4);
       --color-p3-gold: color(display-p3 0.95 0.75 0.1);
+      --color-p3-cyan: color(display-p3 0.1 0.8 0.9);
+      --color-p3-magenta: color(display-p3 0.9 0.2 0.6);
       
-      /* Dark Mode Support */
-      --bg-color: var(--lightningcss-light, #fdfdfd) var(--lightningcss-dark, #121212);
+      /* Advanced Dark Mode Support */
+      --bg-color: var(--lightningcss-light, #fdfdfd) var(--lightningcss-dark, #0a0a0a);
       --text-color: var(--lightningcss-light, #1e293b) var(--lightningcss-dark, #e2e8f0);
-      --card-bg: var(--lightningcss-light, #ffffff) var(--lightningcss-dark, #1e293b);
-      --border-color: var(--lightningcss-light, #cbd5e1) var(--lightningcss-dark, #334155);
+      --card-bg: var(--lightningcss-light, #ffffff) var(--lightningcss-dark, #1a1a1a);
+      --border-color: var(--lightningcss-light, #cbd5e1) var(--lightningcss-dark, #2a2a2a);
+      --code-bg: var(--lightningcss-light, #f8fafc) var(--lightningcss-dark, #0f0f0f);
       
-      /* Typography */
+      /* Enhanced Typography System */
       --font-family-heading: 'Merriweather', serif;
       --font-family-body: 'Open Sans', sans-serif;
+      --font-family-mono: 'JetBrains Mono', monospace;
       --font-size-base: 1.05rem;
       --line-height-body: 1.7;
       --letter-spacing-body: 0.02em;
       --letter-spacing-heading: -0.03em;
       
-      /* Spacing System */
+      /* Fluid Typography Scale */
+      --fluid-type-min: 0.8rem;
+      --fluid-type-max: 1.2rem;
+      --fluid-type-screen: 320px;
+      --fluid-type-preferred: calc(var(--fluid-type-min) * 1em + var(--fluid-type-max) - var(--fluid-type-min) * 1em);
+      
+      /* Advanced Spacing System */
       --space-xs: 0.5rem;
       --space-sm: calc(var(--space-xs) * 1.5);
       --space-md: calc(var(--space-sm) * 2);
       --space-lg: calc(var(--space-md) * 1.67);
+      --space-xl: calc(var(--space-lg) * 1.5);
       
-      /* Dynamic Values */
+      /* Dynamic Values Enhanced */
       --radius-dynamic: clamp(6px, 1vw, 14px);
       --shadow-color: rgba(0, 0, 0, 0.15);
       --shadow-strong: rgba(0, 0, 0, 0.25);
+      --shadow-glow: rgba(139, 92, 246, 0.3);
+      
+      /* Animation Variables */
+      --animation-fast: 0.15s;
+      --animation-normal: 0.3s;
+      --animation-slow: 0.5s;
+      --easing-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      --easing-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      
+      /* Missing Color Definitions */
+      --color-primary: var(--color-accent-lch);
+      --color-primary-dark: oklch(from var(--color-primary) calc(l - 0.1) c h);
+      --color-success: oklch(70% 0.18 145);
+      --color-neutral-medium: oklch(50% 0.05 250);
+      --color-neutral-dark: oklch(30% 0.05 250);
+      --color-neutral-light: oklch(70% 0.05 250);
+      --border-radius-sm: 6px;
     }
 
-    /* === BASE STYLES === */
+    /* === ADVANCED BASE STYLES === */
     html {
       scroll-behavior: smooth;
       scroll-padding-top: var(--space-lg);
@@ -59,11 +90,14 @@
       letter-spacing: var(--letter-spacing-body);
       color: var(--text-color);
       background: var(--bg-color);
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 60L15 45L30 60L45 45L60 60V0H0V60zM0 0L15 15L30 0L45 15L60 0V60H0V0z' fill-rule='nonzero'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      background-size: 60px 60px;
+      background-image: 
+        radial-gradient(circle at 20% 80%, oklch(65% 0.15 250 / 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, oklch(65% 0.15 10 / 0.1) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 60L15 45L30 60L45 45L60 60V0H0V60zM0 0L15 15L30 0L45 15L60 0V60H0V0z' fill-rule='nonzero'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-size: 60px 60px, 60px 60px, 60px 60px;
       background-attachment: fixed;
       min-height: 100vh;
-      transition: background-color 0.5s ease, color 0.5s ease;
+      transition: background-color var(--animation-slow) ease, color var(--animation-slow) ease;
     }
 
     .container {
@@ -72,7 +106,7 @@
       padding: var(--space-lg);
     }
 
-    /* === THEME & LANGUAGE TOGGLES === */
+    /* === ENHANCED CONTROL PANEL === */
     .controls {
       position: fixed;
       top: var(--space-md);
@@ -80,9 +114,11 @@
       display: flex;
       gap: var(--space-sm);
       z-index: 1000;
+      flex-wrap: wrap;
+      max-width: 200px;
     }
 
-    .theme-toggle, .lang-toggle {
+    .theme-toggle, .lang-toggle, .animation-toggle, .reduce-motion {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-dynamic);
@@ -91,22 +127,32 @@
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 4px 12px var(--shadow-color);
-      transition: all 0.3s ease, background-color 0.5s ease, color 0.5s ease;
+      transition: all var(--animation-normal) ease, background-color var(--animation-slow) ease, color var(--animation-slow) ease;
+      font-size: 0.85rem;
+      white-space: nowrap;
     }
 
-    .theme-toggle:hover, .lang-toggle:hover {
+    .theme-toggle:hover, .lang-toggle:hover, .animation-toggle:hover, .reduce-motion:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 16px var(--shadow-color);
+      background: var(--color-vibrant-purple);
+      color: white;
     }
 
-    /* === HERO SECTION === */
+    .theme-toggle:focus-visible, .lang-toggle:focus-visible, .animation-toggle:focus-visible, .reduce-motion:focus-visible {
+      outline: 2px solid var(--color-accent-lch);
+      outline-offset: 2px;
+    }
+
+    /* === ADVANCED HERO SECTION === */
     .hero {
       text-align: center;
       padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
       background: linear-gradient(
         145deg,
         var(--bg-color) 0%,
-        oklch(from var(--bg-color) l c h / 90%) 100%
+        oklch(from var(--bg-color) l c h / 95%) 50%,
+        oklch(from var(--bg-color) calc(l - 0.02) c h / 90%) 100%
       );
       border-radius: var(--radius-dynamic);
       margin-bottom: var(--space-lg);
@@ -123,16 +169,17 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(
-        circle at 20% 30%,
-        oklch(65% 0.25 10 / 0.1) 0%,
-        transparent 50%
-      ), radial-gradient(
-        circle at 80% 70%,
-        oklch(65% 0.25 250 / 0.1) 0%,
-        transparent 50%
-      );
+      background: 
+        radial-gradient(circle at 20% 30%, oklch(65% 0.25 10 / 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, oklch(65% 0.25 250 / 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, oklch(65% 0.15 280 / 0.05) 0%, transparent 70%);
       pointer-events: none;
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroGlow {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
 
     h1 {
@@ -143,6 +190,16 @@
       margin-bottom: var(--space-sm);
       letter-spacing: var(--letter-spacing-heading);
       text-shadow: 0 2px 4px var(--shadow-color);
+      background: linear-gradient(135deg, var(--color-accent-lch), var(--color-vibrant-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleShimmer 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleShimmer {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.2); }
     }
 
     .subtitle {
@@ -154,14 +211,14 @@
       letter-spacing: 0.015em;
     }
 
-    /* === MULTILINGUAL COMPONENT STYLES === */
+    /* === ENHANCED MULTILINGUAL COMPONENT STYLES === */
     .multilingual-component {
       background: var(--card-bg);
-      border-radius: var(--radius-dynamic); /* Base radius, corners overridden by :dir() */
+      border-radius: var(--radius-dynamic);
       box-shadow: 0 6px 15px var(--shadow-color);
       position: relative;
       overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: all var(--animation-slow) var(--easing-smooth);
       border: 1px solid var(--border-color);
       
       /* Enhanced with perceptual color gradient */
@@ -206,6 +263,7 @@
     .multilingual-component:hover {
       transform: translateY(-6px) rotateZ(-0.3deg);
       box-shadow: 0 12px 30px var(--shadow-strong), 0 4px 10px var(--shadow-color);
+      border-inline-start-color: var(--color-vibrant-purple);
     }
 
     /* Component interior styling */
@@ -219,7 +277,7 @@
 
     .component-icon {
       font-size: 2rem;
-      transition: transform 0.3s ease;
+      transition: transform var(--animation-normal) ease;
     }
 
     .component-title {
@@ -245,6 +303,12 @@
       font-weight: 700;
       font-size: 0.8rem;
       border-radius: 9999px;
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     /* LTR badge positioning */
@@ -257,7 +321,7 @@
       left: var(--space-xs);
     }
 
-    /* === BUTTONS & BADGES === */
+    /* === ENHANCED BUTTONS & BADGES === */
     .badges {
       display: flex;
       flex-wrap: wrap;
@@ -277,9 +341,29 @@
       border-radius: 9999px;
       font-weight: 700;
       box-shadow: 0 3px 8px var(--shadow-color);
-      transition: transform 0.25s ease-out;
+      transition: all var(--animation-normal) ease-out;
       border: 1px solid rgba(255,255,255,0.2);
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width var(--animation-normal) ease, height var(--animation-normal) ease;
+    }
+
+    .badge:hover::before {
+      width: 100%;
+      height: 100%;
     }
 
     .badge:hover {
@@ -287,7 +371,7 @@
       box-shadow: 0 0 20px oklch(from var(--color-accent-lch) l c h / 0.4), 0 6px 15px var(--shadow-color);
     }
 
-    /* === METRICS === */
+    /* === ENHANCED METRICS === */
     .metrics {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
@@ -301,8 +385,9 @@
       padding: var(--space-lg);
       box-shadow: 0 4px 12px var(--shadow-color);
       border: 1px solid var(--border-color);
-      transition: transform 0.3s ease-out;
+      transition: all var(--animation-normal) ease-out;
       position: relative;
+      overflow: hidden;
     }
 
     .metric-card::before {
@@ -323,6 +408,7 @@
 
     .metric-card:hover {
       transform: translateY(-6px) rotateZ(-0.5deg);
+      box-shadow: 0 8px 20px var(--shadow-strong);
     }
 
     .metric-value {
@@ -333,6 +419,12 @@
       margin-bottom: var(--space-xs);
       letter-spacing: -0.04em;
       text-shadow: 0 1px 3px var(--shadow-color);
+      animation: valueCount 2s ease-out;
+    }
+
+    @keyframes valueCount {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .metric-label {
@@ -342,7 +434,7 @@
       letter-spacing: 0.08em;
     }
 
-    /* === FEATURES === */
+    /* === ENHANCED FEATURES === */
     .features {
       background: var(--card-bg);
       border-radius: var(--radius-dynamic);
@@ -361,6 +453,23 @@
       padding-bottom: var(--space-sm);
       border-bottom: 4px solid var(--color-accent-lch);
       letter-spacing: var(--letter-spacing-heading);
+      position: relative;
+    }
+
+    .features h2::after, .css-highlights h2::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--color-vibrant-purple);
+      animation: underlineGrow 1s ease-out;
+    }
+
+    @keyframes underlineGrow {
+      0% { width: 0; }
+      100% { width: 60px; }
     }
 
     .feature-grid {
@@ -373,13 +482,14 @@
       align-items: flex-start;
       padding: var(--space-sm) 0;
       border-bottom: 1px solid var(--border-color);
-      transition: background-color 0.25s ease-out, transform 0.1s ease-out;
+      transition: all var(--animation-normal) ease-out;
       border-radius: var(--border-radius-sm);
     }
 
     .feature-item:hover {
       background-color: oklch(from var(--color-primary) l c h / 0.03);
       transform: translateX(4px);
+      padding-left: var(--space-sm);
     }
 
     .feature-item::before {
@@ -389,9 +499,16 @@
       font-size: 1.5rem;
       margin-inline-end: var(--space-sm);
       min-width: 1.8rem;
+      animation: checkmark 0.5s ease-out;
     }
 
-    /* === CSS HIGHLIGHTS === */
+    @keyframes checkmark {
+      0% { transform: scale(0) rotate(-45deg); }
+      50% { transform: scale(1.2) rotate(10deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    /* === ENHANCED CSS HIGHLIGHTS === */
     .css-highlights {
       background: var(--card-bg);
       border-radius: var(--radius-dynamic);
@@ -413,8 +530,9 @@
       padding: var(--space-md);
       border-left: 5px solid var(--color-primary);
       box-shadow: 0 2px 6px var(--shadow-color);
-      transition: transform 0.25s ease-out;
+      transition: all var(--animation-normal) ease-out;
       position: relative;
+      overflow: hidden;
     }
 
     .css-feature::before {
@@ -432,6 +550,7 @@
     .css-feature:hover {
       transform: translateY(-4px);
       border-left-color: var(--color-success);
+      box-shadow: 0 6px 15px var(--shadow-color);
     }
 
     .css-feature h3 {
@@ -448,7 +567,7 @@
       line-height: 1.6;
     }
 
-    /* === CTA BUTTONS === */
+    /* === ENHANCED CTA BUTTONS === */
     .cta-section {
       padding: var(--space-lg) 0;
       text-align: center;
@@ -468,11 +587,31 @@
       font-size: clamp(1rem, 2vw, 1.1rem);
       margin: var(--space-xs);
       text-decoration: none;
-      transition: all 0.35s ease-out;
+      transition: all var(--animation-normal) ease-out;
       box-shadow: 0 6px 15px var(--shadow-color);
       border: none;
       cursor: pointer;
       letter-spacing: 0.03em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width var(--animation-slow) ease, height var(--animation-slow) ease;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
     .btn:hover {
@@ -482,6 +621,7 @@
         oklch(from var(--color-primary-dark) l c calc(h + 20)) 100%
       );
       transform: translateY(-4px) scale(1.03) rotateZ(0.2deg);
+      box-shadow: 0 8px 20px var(--shadow-strong);
     }
 
     .btn:focus-visible {
@@ -506,7 +646,7 @@
       );
     }
 
-    /* === FOOTER === */
+    /* === ENHANCED FOOTER === */
     .footer {
       padding: var(--space-lg) 0;
       color: var(--color-neutral-light);
@@ -516,12 +656,80 @@
       text-align: center;
     }
 
-    /* === RESPONSIVE === */
+    /* === INTERACTIVE DEMO SECTION === */
+    .demo-section {
+      background: var(--card-bg);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      border: 1px solid var(--border-color);
+    }
+
+    .demo-controls {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .demo-btn {
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-xs) var(--space-sm);
+      font-family: var(--font-family-mono);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all var(--animation-normal) ease;
+    }
+
+    .demo-btn:hover {
+      background: var(--color-vibrant-purple);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .demo-output {
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-md);
+      font-family: var(--font-family-mono);
+      font-size: 0.9rem;
+      min-height: 100px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+
+    /* === ACCESSIBILITY ENHANCEMENTS === */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* === ENHANCED RESPONSIVE === */
     @media (max-width: 768px) {
       .controls {
         top: var(--space-sm);
         right: var(--space-sm);
         flex-direction: column;
+        max-width: 150px;
       }
       
       .multilingual-component:dir(ltr),
@@ -534,38 +742,65 @@
       .metrics {
         grid-template-columns: repeat(2, 1fr);
       }
+      
+      .demo-controls {
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 480px) {
       .metrics {
         grid-template-columns: 1fr;
       }
+      
+      .css-features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* === ANIMATION CLASSES === */
+    .animations-enabled * {
+      animation-play-state: running !important;
+    }
+
+    .animations-disabled * {
+      animation-play-state: paused !important;
+    }
+
+    .focus-enhanced *:focus-visible {
+      outline: 3px solid var(--color-accent-lch) !important;
+      outline-offset: 2px !important;
+      box-shadow: 0 0 0 6px oklch(from var(--color-accent-lch) l c h / 0.3) !important;
     }
   </style>
 </head>
 <body>
-  <!-- Control Buttons -->
+  <!-- Enhanced Control Panel -->
   <div class="controls">
-    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
-    <button class="lang-toggle" onclick="toggleLanguage()">🌐 العربية</button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌓 Theme</button>
+    <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle language">🌐 العربية</button>
+    <button class="animation-toggle" onclick="toggleAnimations()" aria-label="Toggle animations">✨ Animations</button>
+    <button class="reduce-motion" onclick="toggleFocusMode()" aria-label="Toggle focus mode">🎯 Focus</button>
   </div>
 
   <div class="container">
     <div class="hero">
-      <h1>⚡ Lightning CSS Multilingual</h1>
-      <p class="subtitle">Van Gogh Style with Global Language Support</p>
+      <h1>⚡ Lightning CSS Enhanced v4.0</h1>
+      <p class="subtitle">Advanced Multilingual & Van Gogh Style with Interactive Demos</p>
       
       <div class="badges">
         <span class="badge">P3 Colors</span>
         <span class="badge">OKLCH</span>
         <span class="badge">:dir() Support</span>
         <span class="badge">RTL/LTR</span>
+        <span class="badge">Interactive</span>
+        <span class="badge">v4.0</span>
       </div>
     </div>
 
     <div class="metrics">
       <div class="metric-card">
-        <div class="metric-value">98%</div>
+        <div class="metric-value">99%</div>
         <div class="metric-label">Language Coverage</div>
       </div>
       <div class="metric-card">
@@ -582,59 +817,90 @@
       </div>
     </div>
 
+    <!-- Interactive Demo Section -->
+    <div class="demo-section">
+      <h2>🎮 Interactive CSS Playground</h2>
+      <p class="subtitle">Experiment with Lightning CSS features in real-time</p>
+      
+      <div class="demo-controls">
+        <button class="demo-btn" onclick="demoColorSpaces()">Color Spaces</button>
+        <button class="demo-btn" onclick="demoLogicalProps()">Logical Props</button>
+        <button class="demo-btn" onclick="demoModernFunctions()">Modern Functions</button>
+        <button class="demo-btn" onclick="demoAnimations()">Animations</button>
+        <button class="demo-btn" onclick="clearDemo()">Clear</button>
+      </div>
+      
+      <div class="demo-output" id="demoOutput">
+// Welcome to Lightning CSS Interactive Playground!
+// Click the buttons above to see live CSS demonstrations...
+
+console.log('Lightning CSS v4.0 - Advanced Features Ready');
+      </div>
+    </div>
+
     <!-- Multilingual Component Demo -->
     <div class="features">
-      <h2>🌍 Multilingual Component Demo</h2>
+      <h2>🌍 Advanced Multilingual Component Demo</h2>
       <p class="subtitle" style="margin-bottom: var(--space-lg);">
-        This component automatically adapts its layout based on document direction (LTR/RTL)
+        This component intelligently adapts its layout based on document direction (LTR/RTL)
+        with enhanced animations and accessibility features.
       </p>
       
       <div class="multilingual-component" id="multilingualDemo">
         <span class="component-badge">Auto-Adapt</span>
         <div class="component-header">
           <span class="component-icon">🎨</span>
-          <h3 class="component-title">Van Gogh Multilingual Canvas</h3>
+          <h3 class="component-title">Van Gogh Multilingual Canvas v4.0</h3>
         </div>
         <div class="component-content">
           <p>
-            This component intelligently switches between left-to-right and right-to-left layouts.
+            This enhanced component intelligently switches between left-to-right and right-to-left layouts.
             In LTR mode, it uses <code>margin-left</code> and <code>border-top-left-radius</code>.
             In RTL mode, it uses <code>margin-right</code> and <code>border-top-right-radius</code>.
           </p>
           <p style="margin-top: var(--space-sm);">
             The <code>:dir()</code> pseudo-class enables true internationalization without JavaScript.
+            Enhanced with smooth animations, focus management, and accessibility improvements.
           </p>
         </div>
       </div>
     </div>
 
     <div class="css-highlights">
-      <h2>🚀 Lightning CSS Features</h2>
+      <h2>🚀 Advanced Lightning CSS Features v4.0</h2>
       
       <div class="css-features">
         <div class="css-feature">
-          <h3>Calc() Expression Optimization</h3>
-          <p>Fixed stack overflow with nested calculations, ensuring complex responsive layouts render perfectly.</p>
+          <h3>Enhanced Calc() Expressions</h3>
+          <p>Advanced nested calculations with stack overflow protection and performance optimization.</p>
         </div>
         <div class="css-feature">
-          <h3>P3 Color Support</h3>
-          <p>Proper parsing and fallback for display-p3() color space beyond sRGB.</p>
+          <h3>P3 Wide Gamut Colors</h3>
+          <p>Full display-p3() color space support with intelligent sRGB fallbacks.</p>
         </div>
         <div class="css-feature">
           <h3>:dir() Pseudo-class</h3>
-          <p>Automatic RTL/LTR styling with direction-aware CSS selectors.</p>
+          <p>Automatic RTL/LTR styling with enhanced direction-aware CSS selectors.</p>
         </div>
         <div class="css-feature">
-          <h3>Logical Properties</h3>
-          <p>Automatic conversion to margin-inline-start, border-start-radius, etc.</p>
+          <h3>Advanced Logical Properties</h3>
+          <p>Comprehensive margin-inline-start, border-start-radius, and flow-relative properties.</p>
         </div>
         <div class="css-feature">
-          <h3>Dark Mode Compilation</h3>
-          <p>Automatic dark mode CSS generation from light mode sources.</p>
+          <h3>Smart Dark Mode</h3>
+          <p>Intelligent dark mode compilation with Lightning CSS variable optimization.</p>
         </div>
         <div class="css-feature">
           <h3>Modern CSS Functions</h3>
-          <p>Supports clamp(), min(), max(), round(), mod(), and rem().</p>
+          <p>Complete support for clamp(), min(), max(), round(), mod(), rem(), and more.</p>
+        </div>
+        <div class="css-feature">
+          <h3>Interactive Animations</h3>
+          <p>Smooth micro-interactions with respect for prefers-reduced-motion.</p>
+        </div>
+        <div class="css-feature">
+          <h3>Enhanced Accessibility</h3>
+          <p>ARIA-friendly focus management and screen reader optimizations.</p>
         </div>
       </div>
     </div>
@@ -645,13 +911,13 @@
     </div>
 
     <div class="footer">
-      <p>Built with ❤️ and Lightning CSS • Zero errors, maximum performance, global-ready</p>
-      <p>© 2025 Enhanced Multilingual CSS System v3.0</p>
+      <p>Built with ❤️ and Lightning CSS v4.0 • Zero errors, maximum performance, global-ready</p>
+      <p>© 2025 Enhanced Multilingual CSS System v4.0 • Advanced Interactive Edition</p>
     </div>
   </div>
 
   <script>
-    // Theme Toggle
+    // Enhanced Theme Toggle
     function toggleTheme() {
       const html = document.documentElement;
       const currentTheme = html.getAttribute('data-theme') || 'light';
@@ -668,12 +934,14 @@
         html.style.setProperty('--lightningcss-light', 'initial');
         html.style.setProperty('--lightningcss-dark', ' ');
       }
+      
+      // Add visual feedback
+      document.body.style.transition = 'all 0.5s ease';
     }
 
-    // Language Toggle
+    // Enhanced Language Toggle
     function toggleLanguage() {
       const html = document.documentElement;
-      const currentLang = html.getAttribute('lang');
       const currentDir = html.getAttribute('dir');
       
       if (currentDir === 'ltr') {
@@ -696,8 +964,174 @@
       localStorage.setItem('direction', html.getAttribute('dir'));
     }
 
-    // Initialize on load
+    // Animation Toggle
+    function toggleAnimations() {
+      const body = document.body;
+      const btn = document.querySelector('.animation-toggle');
+      
+      if (body.classList.contains('animations-disabled')) {
+        body.classList.remove('animations-disabled');
+        body.classList.add('animations-enabled');
+        btn.textContent = '✨ Animations';
+        localStorage.setItem('animations', 'enabled');
+      } else {
+        body.classList.remove('animations-enabled');
+        body.classList.add('animations-disabled');
+        btn.textContent = '⏸️ Paused';
+        localStorage.setItem('animations', 'disabled');
+      }
+    }
+
+    // Focus Mode Toggle
+    function toggleFocusMode() {
+      const body = document.body;
+      const btn = document.querySelector('.reduce-motion');
+      
+      if (body.classList.contains('focus-enhanced')) {
+        body.classList.remove('focus-enhanced');
+        btn.textContent = '🎯 Focus';
+        localStorage.setItem('focusMode', 'normal');
+      } else {
+        body.classList.add('focus-enhanced');
+        btn.textContent = '👁️ Enhanced';
+        localStorage.setItem('focusMode', 'enhanced');
+      }
+    }
+
+    // Interactive Demo Functions
+    function demoColorSpaces() {
+      const output = document.getElementById('demoOutput');
+      output.textContent = `/* Lightning CSS Color Space Demo */
+
+:root {
+  /* OKLCH - Perceptual Uniformity */
+  --primary-oklch: oklch(65% 0.25 280);
+  --accent-oklch: oklch(75% 0.18 20);
+  
+  /* LCH - CIE LCH Color Space */
+  --vibrant-lch: lch(69.32% 58.34 328.37);
+  
+  /* LAB - CIE LAB Color Space */
+  --neutral-lab: lab(55% -35 35);
+  
+  /* P3 Wide Gamut */
+  --display-p3: color(display-p3 1 0.2 0.4);
+  --p3-gold: color(display-p3 0.95 0.75 0.1);
+}
+
+/* Automatic fallback generation */
+.element {
+  background: var(--primary-oklch);
+  /* Falls back to: oklch(65% 0.25 280) */
+}`;
+    }
+
+    function demoLogicalProps() {
+      const output = document.getElementById('demoOutput');
+      output.textContent = `/* Logical Properties Demo */
+
+/* LTR (Left-to-Right) */
+.element:dir(ltr) {
+  margin-inline-start: 2rem;  /* = margin-left */
+  margin-inline-end: 1rem;   /* = margin-right */
+  border-start-start-radius: 8px;  /* = border-top-left-radius */
+  border-start-end-radius: 8px;   /* = border-top-right-radius */
+  padding-block: 1rem;  /* = padding-top & padding-bottom */
+  inset-inline-start: 0;  /* = left */
+}
+
+/* RTL (Right-to-Left) */
+.element:dir(rtl) {
+  margin-inline-start: 2rem;  /* = margin-right */
+  margin-inline-end: 1rem;   /* = margin-left */
+  border-start-start-radius: 8px;  /* = border-top-right-radius */
+  border-start-end-radius: 8px;   /* = border-top-left-radius */
+  padding-block: 1rem;  /* = padding-top & padding-bottom */
+  inset-inline-start: 0;  /* = right */
+}`;
+    }
+
+    function demoModernFunctions() {
+      const output = document.getElementById('demoOutput');
+      output.textContent = `/* Modern CSS Functions Demo */
+
+:root {
+  /* Fluid Typography */
+  --fluid-size: clamp(1rem, 2.5vw, 2rem);
+  
+  /* Responsive Spacing */
+  --responsive-gap: min(2rem, 5vw);
+  
+  /* Advanced Calculations */
+  --complex-calc: calc(100% - var(--sidebar-width) * 2);
+  
+  /* Mathematical Operations */
+  --grid-columns: round(12 / var(--item-size));
+  --remainder: mod(100, 7);
+  --aspect-ratio: 16 / 9;
+}
+
+/* Real-world applications */
+.container {
+  font-size: var(--fluid-size);
+  gap: var(--responsive-gap);
+  width: var(--complex-calc);
+}
+
+.grid {
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  aspect-ratio: var(--aspect-ratio);
+}`;
+    }
+
+    function demoAnimations() {
+      const output = document.getElementById('demoOutput');
+      output.textContent = `/* Lightning CSS Animation Demo */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Advanced Easing Functions */
+.element {
+  animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Respects prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .element {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Lightning CSS optimizes animations for performance */
+.optimized {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0); /* Hardware acceleration */
+}`;
+    }
+
+    function clearDemo() {
+      const output = document.getElementById('demoOutput');
+      output.textContent = `// Demo cleared. Ready for next demonstration...
+
+console.log('Lightning CSS v4.0 - Interactive Playground');
+console.log('Click any button above to see live CSS examples!');`;
+    }
+
+    // Enhanced Initialize on load
     document.addEventListener('DOMContentLoaded', function() {
+      // Theme initialization
       const savedTheme = localStorage.getItem('theme') || 'light';
       document.documentElement.setAttribute('data-theme', savedTheme);
       
@@ -706,6 +1140,7 @@
         document.documentElement.style.setProperty('--lightningcss-dark', 'initial');
       }
       
+      // Language initialization
       const savedLang = localStorage.getItem('language') || 'en';
       const savedDir = localStorage.getItem('direction') || 'ltr';
       
@@ -720,6 +1155,53 @@
         document.querySelector('.lang-toggle').textContent = '🌐 العربية';
         document.documentElement.style.setProperty('--lightningcss-ltr', 'initial');
         document.documentElement.style.setProperty('--lightningcss-rtl', ' ');
+      }
+      
+      // Animation state initialization
+      const savedAnimations = localStorage.getItem('animations') || 'enabled';
+      if (savedAnimations === 'disabled') {
+        document.body.classList.add('animations-disabled');
+        document.querySelector('.animation-toggle').textContent = '⏸️ Paused';
+      } else {
+        document.body.classList.add('animations-enabled');
+      }
+      
+      // Focus mode initialization
+      const savedFocusMode = localStorage.getItem('focusMode') || 'normal';
+      if (savedFocusMode === 'enhanced') {
+        document.body.classList.add('focus-enhanced');
+        document.querySelector('.reduce-motion').textContent = '👁️ Enhanced';
+      }
+      
+      // Add entrance animations
+      setTimeout(() => {
+        document.querySelectorAll('.metric-card').forEach((card, index) => {
+          setTimeout(() => {
+            card.style.animation = 'valueCount 0.5s ease-out';
+          }, index * 100);
+        });
+      }, 500);
+    });
+
+    // Keyboard navigation enhancement
+    document.addEventListener('keydown', function(e) {
+      // Ctrl/Cmd + K for quick demo access
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('demoOutput').focus();
+        document.getElementById('demoOutput').scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      // Ctrl/Cmd + T for theme toggle
+      if ((e.ctrlKey || e.metaKey) && e.key === 't') {
+        e.preventDefault();
+        toggleTheme();
+      }
+      
+      // Ctrl/Cmd + L for language toggle
+      if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
+        e.preventDefault();
+        toggleLanguage();
       }
     });
   </script>
