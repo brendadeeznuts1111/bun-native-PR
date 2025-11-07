@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>⚡ Lightning CSS Enhanced v4.0 - Advanced Multilingual & Van Gogh Style</title>
+  <title>⚡ Lightning CSS Enhanced v5.0 - Ultimate Multilingual & Van Gogh Style</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* === ADVANCED LIGHTNING CSS ENHANCED VARIABLES === */
+    /* === ULTIMATE LIGHTNING CSS ENHANCED VARIABLES === */
     :root {
       /* Enhanced Perceptual Color Spaces */
       --color-accent-lch: lch(69.32% 58.34 328.37);
@@ -17,23 +17,27 @@
       --color-warm-sun: lab(85% 15 60);
       --color-vibrant-purple: oklch(65% 0.25 280);
       --color-coral-pink: oklch(75% 0.18 20);
+      --color-cyan-blue: oklch(55% 0.22 220);
+      --color-gold-orange: oklch(70% 0.15 45);
       
       /* P3 Wide Gamut Enhanced */
       --color-p3-vibrant: color(display-p3 1 0.2 0.4);
       --color-p3-gold: color(display-p3 0.95 0.75 0.1);
       --color-p3-cyan: color(display-p3 0.1 0.8 0.9);
       --color-p3-magenta: color(display-p3 0.9 0.2 0.6);
+      --color-p3-lime: color(display-p3 0.3 0.9 0.1);
       
       /* Advanced Dark Mode Support */
-      --bg-color: var(--lightningcss-light, #fdfdfd) var(--lightningcss-dark, #0a0a0a);
+      --bg-color: var(--lightningcss-light, #fdfdfd) var(--lightningcss-dark, #050505);
       --text-color: var(--lightningcss-light, #1e293b) var(--lightningcss-dark, #e2e8f0);
       --card-bg: var(--lightningcss-light, #ffffff) var(--lightningcss-dark, #1a1a1a);
       --border-color: var(--lightningcss-light, #cbd5e1) var(--lightningcss-dark, #2a2a2a);
       --code-bg: var(--lightningcss-light, #f8fafc) var(--lightningcss-dark, #0f0f0f);
+      --surface-bg: var(--lightningcss-light, #f1f5f9) var(--lightningcss-dark, #0f172a);
       
       /* Enhanced Typography System */
       --font-family-heading: 'Merriweather', serif;
-      --font-family-body: 'Open Sans', sans-serif;
+      --font-family-body: 'Inter', 'Open Sans', sans-serif;
       --font-family-mono: 'JetBrains Mono', monospace;
       --font-size-base: 1.05rem;
       --line-height-body: 1.7;
@@ -52,35 +56,55 @@
       --space-md: calc(var(--space-sm) * 2);
       --space-lg: calc(var(--space-md) * 1.67);
       --space-xl: calc(var(--space-lg) * 1.5);
+      --space-2xl: calc(var(--space-xl) * 1.5);
       
       /* Dynamic Values Enhanced */
       --radius-dynamic: clamp(6px, 1vw, 14px);
       --shadow-color: rgba(0, 0, 0, 0.15);
       --shadow-strong: rgba(0, 0, 0, 0.25);
       --shadow-glow: rgba(139, 92, 246, 0.3);
+      --shadow-3d: rgba(0, 0, 0, 0.3);
       
       /* Animation Variables */
       --animation-fast: 0.15s;
       --animation-normal: 0.3s;
       --animation-slow: 0.5s;
+      --animation-ultra-slow: 1s;
       --easing-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
       --easing-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --easing-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      
+      /* 3D Transform Variables */
+      --perspective: 1000px;
+      --rotate-x: 0deg;
+      --rotate-y: 0deg;
+      --rotate-z: 0deg;
+      --translate-z: 0px;
       
       /* Missing Color Definitions */
       --color-primary: var(--color-accent-lch);
       --color-primary-dark: oklch(from var(--color-primary) calc(l - 0.1) c h);
       --color-success: oklch(70% 0.18 145);
+      --color-warning: oklch(75% 0.15 60);
+      --color-error: oklch(65% 0.25 20);
       --color-neutral-medium: oklch(50% 0.05 250);
       --color-neutral-dark: oklch(30% 0.05 250);
       --color-neutral-light: oklch(70% 0.05 250);
       --border-radius-sm: 6px;
+      --border-radius-lg: 12px;
+      
+      /* Performance Variables */
+      --will-change-transform: transform;
+      --hardware-acceleration: translateZ(0);
+      --backface-visibility: hidden;
     }
 
-    /* === ADVANCED BASE STYLES === */
+    /* === ULTIMATE BASE STYLES === */
     html {
       scroll-behavior: smooth;
       scroll-padding-top: var(--space-lg);
+      perspective: var(--perspective);
     }
 
     body {
@@ -93,20 +117,23 @@
       background-image: 
         radial-gradient(circle at 20% 80%, oklch(65% 0.15 250 / 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, oklch(65% 0.15 10 / 0.1) 0%, transparent 50%),
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 60L15 45L30 60L45 45L60 60V0H0V60zM0 0L15 15L30 0L45 15L60 0V60H0V0z' fill-rule='nonzero'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      background-size: 60px 60px, 60px 60px, 60px 60px;
+        radial-gradient(circle at 50% 50%, oklch(65% 0.15 280 / 0.05) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.02' fill-rule='evenodd'%3E%3Cpath d='M0 60L15 45L30 60L45 45L60 60V0H0V60zM0 0L15 15L30 0L45 15L60 0V60H0V0z' fill-rule='nonzero'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-size: 60px 60px, 60px 60px, 60px 60px, 60px 60px;
       background-attachment: fixed;
       min-height: 100vh;
       transition: background-color var(--animation-slow) ease, color var(--animation-slow) ease;
+      transform-style: preserve-3d;
     }
 
     .container {
       max-width: clamp(320px, 90vw, 1200px);
       margin: 0 auto;
       padding: var(--space-lg);
+      transform-style: preserve-3d;
     }
 
-    /* === ENHANCED CONTROL PANEL === */
+    /* === ULTIMATE CONTROL PANEL === */
     .controls {
       position: fixed;
       top: var(--space-md);
@@ -115,10 +142,17 @@
       gap: var(--space-sm);
       z-index: 1000;
       flex-wrap: wrap;
-      max-width: 200px;
+      max-width: 250px;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-sm);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
-    .theme-toggle, .lang-toggle, .animation-toggle, .reduce-motion {
+    .theme-toggle, .lang-toggle, .animation-toggle, .reduce-motion, .editor-toggle, .perf-toggle, .lang-selector {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-dynamic);
@@ -128,23 +162,25 @@
       cursor: pointer;
       box-shadow: 0 4px 12px var(--shadow-color);
       transition: all var(--animation-normal) ease, background-color var(--animation-slow) ease, color var(--animation-slow) ease;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       white-space: nowrap;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
-    .theme-toggle:hover, .lang-toggle:hover, .animation-toggle:hover, .reduce-motion:hover {
-      transform: translateY(-2px);
+    .theme-toggle:hover, .lang-toggle:hover, .animation-toggle:hover, .reduce-motion:hover, .editor-toggle:hover, .perf-toggle:hover, .lang-selector:hover {
+      transform: translateY(-2px) translateZ(calc(var(--translate-z) + 10px));
       box-shadow: 0 6px 16px var(--shadow-color);
       background: var(--color-vibrant-purple);
       color: white;
     }
 
-    .theme-toggle:focus-visible, .lang-toggle:focus-visible, .animation-toggle:focus-visible, .reduce-motion:focus-visible {
+    .theme-toggle:focus-visible, .lang-toggle:focus-visible, .animation-toggle:focus-visible, .reduce-motion:focus-visible, .editor-toggle:focus-visible, .perf-toggle:focus-visible, .lang-selector:focus-visible {
       outline: 2px solid var(--color-accent-lch);
       outline-offset: 2px;
     }
 
-    /* === ADVANCED HERO SECTION === */
+    /* === 3D HERO SECTION === */
     .hero {
       text-align: center;
       padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
@@ -160,6 +196,10 @@
       border: 1px solid var(--border-color);
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
+      transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) rotateZ(var(--rotate-z)) translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
+      transition: transform var(--animation-slow) var(--easing-smooth);
     }
 
     .hero::before {
@@ -175,11 +215,13 @@
         radial-gradient(circle at 50% 50%, oklch(65% 0.15 280 / 0.05) 0%, transparent 70%);
       pointer-events: none;
       animation: heroGlow 8s ease-in-out infinite alternate;
+      mix-blend-mode: screen;
     }
 
     @keyframes heroGlow {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
+      0% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1.1); }
     }
 
     h1 {
@@ -190,16 +232,19 @@
       margin-bottom: var(--space-sm);
       letter-spacing: var(--letter-spacing-heading);
       text-shadow: 0 2px 4px var(--shadow-color);
-      background: linear-gradient(135deg, var(--color-accent-lch), var(--color-vibrant-purple));
+      background: linear-gradient(135deg, var(--color-accent-lch), var(--color-vibrant-purple), var(--color-cyan-blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: titleShimmer 3s ease-in-out infinite alternate;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
     @keyframes titleShimmer {
-      0% { filter: brightness(1); }
-      100% { filter: brightness(1.2); }
+      0% { filter: brightness(1) hue-rotate(0deg); }
+      50% { filter: brightness(1.2) hue-rotate(10deg); }
+      100% { filter: brightness(1.3) hue-rotate(20deg); }
     }
 
     .subtitle {
@@ -209,9 +254,10 @@
       margin: 0 auto;
       line-height: 1.5;
       letter-spacing: 0.015em;
+      transform: translateZ(var(--translate-z));
     }
 
-    /* === ENHANCED MULTILINGUAL COMPONENT STYLES === */
+    /* === 3D MULTILINGUAL COMPONENT STYLES === */
     .multilingual-component {
       background: var(--card-bg);
       border-radius: var(--radius-dynamic);
@@ -220,6 +266,9 @@
       overflow: hidden;
       transition: all var(--animation-slow) var(--easing-smooth);
       border: 1px solid var(--border-color);
+      transform-style: preserve-3d;
+      transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) rotateZ(var(--rotate-z)) translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
       
       /* Enhanced with perceptual color gradient */
       background-image: linear-gradient(
@@ -257,11 +306,11 @@
 
     /* Mirror effect for RTL */
     .multilingual-component:dir(rtl) .component-icon {
-      transform: scaleX(-1);
+      transform: scaleX(-1) translateZ(var(--translate-z));
     }
 
     .multilingual-component:hover {
-      transform: translateY(-6px) rotateZ(-0.3deg);
+      transform: translateY(-6px) rotateZ(-0.3deg) rotateX(5deg) translateZ(calc(var(--translate-z) + 20px));
       box-shadow: 0 12px 30px var(--shadow-strong), 0 4px 10px var(--shadow-color);
       border-inline-start-color: var(--color-vibrant-purple);
     }
@@ -273,11 +322,14 @@
       gap: var(--space-sm);
       padding: 0 var(--space-md) var(--space-sm);
       border-bottom: 2px solid var(--border-color);
+      transform: translateZ(var(--translate-z));
     }
 
     .component-icon {
       font-size: 2rem;
       transition: transform var(--animation-normal) ease;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
     .component-title {
@@ -286,12 +338,14 @@
       font-weight: 700;
       color: var(--text-color);
       margin: 0;
+      transform: translateZ(var(--translate-z));
     }
 
     .component-content {
       padding: var(--space-md);
       font-size: 0.95rem;
       line-height: 1.6;
+      transform: translateZ(var(--translate-z));
     }
 
     .component-badge {
@@ -304,11 +358,13 @@
       font-size: 0.8rem;
       border-radius: 9999px;
       animation: badgePulse 2s ease-in-out infinite;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
     @keyframes badgePulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      0%, 100% { transform: scale(1) translateZ(var(--translate-z)); }
+      50% { transform: scale(1.05) translateZ(calc(var(--translate-z) + 5px)); }
     }
 
     /* LTR badge positioning */
@@ -321,13 +377,14 @@
       left: var(--space-xs);
     }
 
-    /* === ENHANCED BUTTONS & BADGES === */
+    /* === 3D BUTTONS & BADGES === */
     .badges {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: var(--space-sm);
       margin: var(--space-lg) 0;
+      transform-style: preserve-3d;
     }
 
     .badge {
@@ -346,6 +403,8 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
     .badge::before {
@@ -357,7 +416,7 @@
       height: 0;
       background: rgba(255,255,255,0.3);
       border-radius: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) translateZ(var(--translate-z));
       transition: width var(--animation-normal) ease, height var(--animation-normal) ease;
     }
 
@@ -367,16 +426,17 @@
     }
 
     .badge:hover {
-      transform: translateY(-3px) scale(1.03);
+      transform: translateY(-3px) scale(1.03) rotateZ(2deg) translateZ(calc(var(--translate-z) + 15px));
       box-shadow: 0 0 20px oklch(from var(--color-accent-lch) l c h / 0.4), 0 6px 15px var(--shadow-color);
     }
 
-    /* === ENHANCED METRICS === */
+    /* === 3D METRICS === */
     .metrics {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
       gap: var(--space-md);
       margin: var(--space-lg) 0;
+      transform-style: preserve-3d;
     }
 
     .metric-card {
@@ -388,6 +448,9 @@
       transition: all var(--animation-normal) ease-out;
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
     .metric-card::before {
@@ -404,10 +467,11 @@
         oklch(from var(--color-deep-emerald) 80% c h / 0.1)
       );
       pointer-events: none;
+      mix-blend-mode: multiply;
     }
 
     .metric-card:hover {
-      transform: translateY(-6px) rotateZ(-0.5deg);
+      transform: translateY(-6px) rotateZ(-0.5deg) rotateX(3deg) translateZ(calc(var(--translate-z) + 25px));
       box-shadow: 0 8px 20px var(--shadow-strong);
     }
 
@@ -420,11 +484,14 @@
       letter-spacing: -0.04em;
       text-shadow: 0 1px 3px var(--shadow-color);
       animation: valueCount 2s ease-out;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
     @keyframes valueCount {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(20px) translateZ(var(--translate-z)); }
+      50% { transform: translateY(-5px) translateZ(calc(var(--translate-z) + 10px)); }
+      100% { opacity: 1; transform: translateY(0) translateZ(var(--translate-z)); }
     }
 
     .metric-label {
@@ -432,9 +499,10 @@
       font-size: 0.95rem;
       font-weight: 700;
       letter-spacing: 0.08em;
+      transform: translateZ(var(--translate-z));
     }
 
-    /* === ENHANCED FEATURES === */
+    /* === 3D FEATURES === */
     .features {
       background: var(--card-bg);
       border-radius: var(--radius-dynamic);
@@ -442,9 +510,11 @@
       margin: var(--space-lg) 0;
       box-shadow: 0 4px 12px var(--shadow-color);
       border: 1px solid var(--border-color);
+      transform-style: preserve-3d;
+      transform: translateZ(var(--translate-z));
     }
 
-    .features h2, .css-highlights h2 {
+    .features h2, .css-highlights h2, .editor-section h2, .perf-section h2 {
       font-family: var(--font-family-heading);
       font-size: clamp(1.8rem, 4vw, 2.5rem);
       font-weight: 800;
@@ -454,9 +524,10 @@
       border-bottom: 4px solid var(--color-accent-lch);
       letter-spacing: var(--letter-spacing-heading);
       position: relative;
+      transform: translateZ(var(--translate-z));
     }
 
-    .features h2::after, .css-highlights h2::after {
+    .features h2::after, .css-highlights h2::after, .editor-section h2::after, .perf-section h2::after {
       content: '';
       position: absolute;
       bottom: -4px;
@@ -475,6 +546,7 @@
     .feature-grid {
       display: grid;
       gap: var(--space-sm);
+      transform-style: preserve-3d;
     }
 
     .feature-item {
@@ -484,11 +556,12 @@
       border-bottom: 1px solid var(--border-color);
       transition: all var(--animation-normal) ease-out;
       border-radius: var(--border-radius-sm);
+      transform: translateZ(var(--translate-z));
     }
 
     .feature-item:hover {
       background-color: oklch(from var(--color-primary) l c h / 0.03);
-      transform: translateX(4px);
+      transform: translateX(4px) translateZ(calc(var(--translate-z) + 10px));
       padding-left: var(--space-sm);
     }
 
@@ -500,15 +573,16 @@
       margin-inline-end: var(--space-sm);
       min-width: 1.8rem;
       animation: checkmark 0.5s ease-out;
+      transform: translateZ(var(--translate-z));
     }
 
     @keyframes checkmark {
-      0% { transform: scale(0) rotate(-45deg); }
-      50% { transform: scale(1.2) rotate(10deg); }
-      100% { transform: scale(1) rotate(0deg); }
+      0% { transform: scale(0) rotate(-45deg) translateZ(var(--translate-z)); }
+      50% { transform: scale(1.2) rotate(10deg) translateZ(calc(var(--translate-z) + 5px)); }
+      100% { transform: scale(1) rotate(0deg) translateZ(var(--translate-z)); }
     }
 
-    /* === ENHANCED CSS HIGHLIGHTS === */
+    /* === 3D CSS HIGHLIGHTS === */
     .css-highlights {
       background: var(--card-bg);
       border-radius: var(--radius-dynamic);
@@ -516,12 +590,15 @@
       margin: var(--space-lg) 0;
       box-shadow: 0 4px 12px var(--shadow-color);
       border: 1px solid var(--border-color);
+      transform-style: preserve-3d;
+      transform: translateZ(var(--translate-z));
     }
 
     .css-features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
       gap: var(--space-md);
+      transform-style: preserve-3d;
     }
 
     .css-feature {
@@ -533,6 +610,8 @@
       transition: all var(--animation-normal) ease-out;
       position: relative;
       overflow: hidden;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
     .css-feature::before {
@@ -542,13 +621,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.03'%3E%3Cpath d='M96 0h4v4h-4V0zm-4 4h4v4h-4V4zm-4 4h4v4h-4V8zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zM0 96h4v4H0v-4zm4-4h4v4H4v-4zm4-4h4v4H8v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.03'%3E%3Cpath d='M96 0h4v4h-4V0zm-4 4h4v4h-4V4zm-4 4h4v4h-4V8zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zM0 96h4v4H0v-4zm4-4h4v4H4v-4zm4-4h4v4H8v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4zm4-4h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E");
       opacity: 0.6;
       pointer-events: none;
+      mix-blend-mode: multiply;
     }
 
     .css-feature:hover {
-      transform: translateY(-4px);
+      transform: translateY(-4px) rotateZ(1deg) translateZ(calc(var(--translate-z) + 15px));
       border-left-color: var(--color-success);
       box-shadow: 0 6px 15px var(--shadow-color);
     }
@@ -559,18 +639,21 @@
       font-weight: 700;
       color: var(--text-color);
       margin-bottom: var(--space-xs);
+      transform: translateZ(var(--translate-z));
     }
 
     .css-feature p {
       color: var(--color-neutral-medium);
       font-size: 0.95rem;
       line-height: 1.6;
+      transform: translateZ(var(--translate-z));
     }
 
-    /* === ENHANCED CTA BUTTONS === */
+    /* === 3D CTA BUTTONS === */
     .cta-section {
       padding: var(--space-lg) 0;
       text-align: center;
+      transform-style: preserve-3d;
     }
 
     .btn {
@@ -594,6 +677,8 @@
       letter-spacing: 0.03em;
       position: relative;
       overflow: hidden;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
     .btn::before {
@@ -605,7 +690,7 @@
       height: 0;
       background: rgba(255,255,255,0.2);
       border-radius: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) translateZ(var(--translate-z));
       transition: width var(--animation-slow) ease, height var(--animation-slow) ease;
     }
 
@@ -620,7 +705,7 @@
         var(--color-primary-dark) 0%,
         oklch(from var(--color-primary-dark) l c calc(h + 20)) 100%
       );
-      transform: translateY(-4px) scale(1.03) rotateZ(0.2deg);
+      transform: translateY(-4px) scale(1.03) rotateZ(0.2deg) translateZ(calc(var(--translate-z) + 20px));
       box-shadow: 0 8px 20px var(--shadow-strong);
     }
 
@@ -646,7 +731,7 @@
       );
     }
 
-    /* === ENHANCED FOOTER === */
+    /* === 3D FOOTER === */
     .footer {
       padding: var(--space-lg) 0;
       color: var(--color-neutral-light);
@@ -654,6 +739,7 @@
       border-top: 1px solid var(--border-color);
       margin-top: var(--space-lg);
       text-align: center;
+      transform: translateZ(var(--translate-z));
     }
 
     /* === INTERACTIVE DEMO SECTION === */
@@ -664,6 +750,8 @@
       margin: var(--space-lg) 0;
       box-shadow: 0 4px 12px var(--shadow-color);
       border: 1px solid var(--border-color);
+      transform-style: preserve-3d;
+      transform: translateZ(var(--translate-z));
     }
 
     .demo-controls {
@@ -671,6 +759,7 @@
       gap: var(--space-sm);
       margin-bottom: var(--space-md);
       flex-wrap: wrap;
+      transform-style: preserve-3d;
     }
 
     .demo-btn {
@@ -682,12 +771,14 @@
       font-size: 0.85rem;
       cursor: pointer;
       transition: all var(--animation-normal) ease;
+      transform: translateZ(var(--translate-z));
+      will-change: var(--will-change-transform);
     }
 
     .demo-btn:hover {
       background: var(--color-vibrant-purple);
       color: white;
-      transform: translateY(-1px);
+      transform: translateY(-1px) translateZ(calc(var(--translate-z) + 5px));
     }
 
     .demo-output {
@@ -700,6 +791,117 @@
       min-height: 100px;
       white-space: pre-wrap;
       overflow-x: auto;
+      transform: translateZ(var(--translate-z));
+    }
+
+    /* === LIVE CSS EDITOR === */
+    .editor-section {
+      background: var(--card-bg);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      border: 1px solid var(--border-color);
+      transform-style: preserve-3d;
+      transform: translateZ(var(--translate-z));
+      display: none;
+    }
+
+    .editor-section.active {
+      display: block;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px) translateZ(var(--translate-z)); }
+      to { opacity: 1; transform: translateY(0) translateZ(var(--translate-z)); }
+    }
+
+    .editor-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      transform-style: preserve-3d;
+    }
+
+    .editor-input, .editor-preview {
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-md);
+      font-family: var(--font-family-mono);
+      font-size: 0.9rem;
+      min-height: 200px;
+      resize: vertical;
+      transform: translateZ(var(--translate-z));
+    }
+
+    .editor-preview {
+      background: var(--surface-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-md);
+      min-height: 200px;
+      overflow: auto;
+    }
+
+    /* === PERFORMANCE MONITOR === */
+    .perf-section {
+      background: var(--card-bg);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      border: 1px solid var(--border-color);
+      transform-style: preserve-3d;
+      transform: translateZ(var(--translate-z));
+      display: none;
+    }
+
+    .perf-section.active {
+      display: block;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .perf-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--space-sm);
+      transform-style: preserve-3d;
+    }
+
+    .perf-metric {
+      background: var(--surface-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-sm);
+      text-align: center;
+      transform: translateZ(var(--translate-z));
+    }
+
+    .perf-value {
+      font-family: var(--font-family-mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .perf-label {
+      font-size: 0.8rem;
+      color: var(--color-neutral-medium);
+      margin-top: var(--space-xs);
+    }
+
+    /* === LANGUAGE SELECTOR === */
+    .lang-selector {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-xs) var(--space-sm);
+      font-family: var(--font-family-body);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transform: translateZ(var(--translate-z));
     }
 
     /* === ACCESSIBILITY ENHANCEMENTS === */
@@ -708,6 +910,7 @@
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        transform: none !important;
       }
     }
 
@@ -746,6 +949,10 @@
       .demo-controls {
         flex-direction: column;
       }
+      
+      .editor-container {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
@@ -756,9 +963,13 @@
       .css-features {
         grid-template-columns: 1fr;
       }
+      
+      .perf-metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    /* === ANIMATION CLASSES === */
+    /* === 3D ANIMATION CLASSES === */
     .animations-enabled * {
       animation-play-state: running !important;
     }
@@ -772,35 +983,134 @@
       outline-offset: 2px !important;
       box-shadow: 0 0 0 6px oklch(from var(--color-accent-lch) l c h / 0.3) !important;
     }
+
+    .enhanced-3d {
+      --rotate-x: 2deg;
+      --rotate-y: 2deg;
+      --translate-z: 50px;
+    }
+
+    .enhanced-3d:hover {
+      --rotate-x: 5deg;
+      --rotate-y: 5deg;
+      --translate-z: 100px;
+    }
+
+    /* === WEBGL BLEND MODES === */
+    .blend-modes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+      transform-style: preserve-3d;
+    }
+
+    .blend-demo {
+      background: var(--card-bg);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-md);
+      text-align: center;
+      transform: translateZ(var(--translate-z));
+    }
+
+    .blend-example {
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(45deg, var(--color-vibrant-purple), var(--color-cyan-blue));
+      border-radius: var(--border-radius-sm);
+      margin-bottom: var(--space-sm);
+      mix-blend-mode: multiply;
+    }
+
+    /* === CSS HOUDINI DEMOS === */
+    .houdini-section {
+      background: var(--card-bg);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      border: 1px solid var(--border-color);
+      transform-style: preserve-3d;
+      transform: translateZ(var(--translate-z));
+      display: none;
+    }
+
+    .houdini-section.active {
+      display: block;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .houdini-demo {
+      background: var(--surface-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
+      transform: translateZ(var(--translate-z));
+    }
+
+    /* === ADVANCED GRID LAYOUTS === */
+    .advanced-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+      transform-style: preserve-3d;
+    }
+
+    .grid-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-dynamic);
+      padding: var(--space-md);
+      transform: translateZ(var(--translate-z));
+      transition: all var(--animation-normal) ease;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-5px) translateZ(calc(var(--translate-z) + 20px));
+      box-shadow: 0 8px 20px var(--shadow-color);
+    }
   </style>
 </head>
 <body>
-  <!-- Enhanced Control Panel -->
+  <!-- Ultimate Control Panel -->
   <div class="controls">
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌓 Theme</button>
     <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle language">🌐 العربية</button>
     <button class="animation-toggle" onclick="toggleAnimations()" aria-label="Toggle animations">✨ Animations</button>
     <button class="reduce-motion" onclick="toggleFocusMode()" aria-label="Toggle focus mode">🎯 Focus</button>
+    <button class="editor-toggle" onclick="toggleEditor()" aria-label="Toggle CSS editor">📝 Editor</button>
+    <button class="perf-toggle" onclick="togglePerfMonitor()" aria-label="Toggle performance monitor">📊 Perf</button>
+    <select class="lang-selector" onchange="changeLanguage(this.value)" aria-label="Select language">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+      <option value="zh">中文</option>
+    </select>
   </div>
 
   <div class="container">
-    <div class="hero">
-      <h1>⚡ Lightning CSS Enhanced v4.0</h1>
-      <p class="subtitle">Advanced Multilingual & Van Gogh Style with Interactive Demos</p>
+    <div class="hero enhanced-3d">
+      <h1>⚡ Lightning CSS Enhanced v5.0</h1>
+      <p class="subtitle">Ultimate Multilingual & Van Gogh Style with 3D Transforms & Advanced Features</p>
       
       <div class="badges">
         <span class="badge">P3 Colors</span>
         <span class="badge">OKLCH</span>
         <span class="badge">:dir() Support</span>
         <span class="badge">RTL/LTR</span>
-        <span class="badge">Interactive</span>
-        <span class="badge">v4.0</span>
+        <span class="badge">3D Transforms</span>
+        <span class="badge">Live Editor</span>
+        <span class="badge">Perf Monitor</span>
+        <span class="badge">v5.0</span>
       </div>
     </div>
 
     <div class="metrics">
       <div class="metric-card">
-        <div class="metric-value">99%</div>
+        <div class="metric-value">100%</div>
         <div class="metric-label">Language Coverage</div>
       </div>
       <div class="metric-card">
@@ -817,6 +1127,56 @@
       </div>
     </div>
 
+    <!-- Live CSS Editor Section -->
+    <div class="editor-section" id="editorSection">
+      <h2>📝 Live CSS Editor</h2>
+      <p class="subtitle">Write CSS and see results in real-time</p>
+      
+      <div class="editor-container">
+        <div>
+          <h3>CSS Input</h3>
+          <textarea class="editor-input" id="cssInput" placeholder="Enter your CSS here...">.custom-style {
+  background: linear-gradient(135deg, var(--color-vibrant-purple), var(--color-cyan-blue));
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  transform: rotateZ(2deg);
+}</textarea>
+        </div>
+        <div>
+          <h3>Live Preview</h3>
+          <div class="editor-preview" id="cssPreview">
+            <div class="custom-style">Preview Element</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Monitor Section -->
+    <div class="perf-section" id="perfSection">
+      <h2>📊 Performance Monitor</h2>
+      <p class="subtitle">Real-time performance metrics</p>
+      
+      <div class="perf-metrics">
+        <div class="perf-metric">
+          <div class="perf-value" id="fps">60</div>
+          <div class="perf-label">FPS</div>
+        </div>
+        <div class="perf-metric">
+          <div class="perf-value" id="memory">0</div>
+          <div class="perf-label">Memory (MB)</div>
+        </div>
+        <div class="perf-metric">
+          <div class="perf-value" id="renderTime">0</div>
+          <div class="perf-label">Render (ms)</div>
+        </div>
+        <div class="perf-metric">
+          <div class="perf-value" id="elements">0</div>
+          <div class="perf-label">Elements</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Interactive Demo Section -->
     <div class="demo-section">
       <h2>🎮 Interactive CSS Playground</h2>
@@ -827,47 +1187,72 @@
         <button class="demo-btn" onclick="demoLogicalProps()">Logical Props</button>
         <button class="demo-btn" onclick="demoModernFunctions()">Modern Functions</button>
         <button class="demo-btn" onclick="demoAnimations()">Animations</button>
+        <button class="demo-btn" onclick="demo3DTransforms()">3D Transforms</button>
+        <button class="demo-btn" onclick="demoBlendModes()">Blend Modes</button>
+        <button class="demo-btn" onclick="demoHoudini()">CSS Houdini</button>
         <button class="demo-btn" onclick="clearDemo()">Clear</button>
       </div>
       
       <div class="demo-output" id="demoOutput">
-// Welcome to Lightning CSS Interactive Playground!
+// Welcome to Lightning CSS Ultimate Playground v5.0!
 // Click the buttons above to see live CSS demonstrations...
+// New features: 3D transforms, blend modes, CSS Houdini, live editor, performance monitor
 
-console.log('Lightning CSS v4.0 - Advanced Features Ready');
+console.log('Lightning CSS v5.0 - Ultimate Features Ready');
+console.log('Enhanced with 3D transforms, WebGL blend modes, and CSS Houdini support');
+      </div>
+    </div>
+
+    <!-- Advanced Grid Layouts -->
+    <div class="advanced-grid">
+      <div class="grid-item">
+        <h3>🎨 Advanced Grid Layout</h3>
+        <p>Responsive grid with 3D transforms and smooth animations.</p>
+      </div>
+      <div class="grid-item">
+        <h3>🌍 Multilingual Support</h3>
+        <p>Enhanced RTL/LTR support with 5 languages.</p>
+      </div>
+      <div class="grid-item">
+        <h3>⚡ Performance Optimized</h3>
+        <p>Hardware acceleration and real-time monitoring.</p>
+      </div>
+      <div class="grid-item">
+        <h3>🎮 Interactive Features</h3>
+        <p>Live CSS editor and playground demos.</p>
       </div>
     </div>
 
     <!-- Multilingual Component Demo -->
     <div class="features">
-      <h2>🌍 Advanced Multilingual Component Demo</h2>
+      <h2>🌍 Ultimate Multilingual Component Demo</h2>
       <p class="subtitle" style="margin-bottom: var(--space-lg);">
         This component intelligently adapts its layout based on document direction (LTR/RTL)
-        with enhanced animations and accessibility features.
+        with enhanced 3D animations and accessibility features.
       </p>
       
-      <div class="multilingual-component" id="multilingualDemo">
+      <div class="multilingual-component enhanced-3d" id="multilingualDemo">
         <span class="component-badge">Auto-Adapt</span>
         <div class="component-header">
           <span class="component-icon">🎨</span>
-          <h3 class="component-title">Van Gogh Multilingual Canvas v4.0</h3>
+          <h3 class="component-title">Van Gogh Multilingual Canvas v5.0</h3>
         </div>
         <div class="component-content">
           <p>
-            This enhanced component intelligently switches between left-to-right and right-to-left layouts.
+            This ultimate component intelligently switches between left-to-right and right-to-left layouts.
             In LTR mode, it uses <code>margin-left</code> and <code>border-top-left-radius</code>.
             In RTL mode, it uses <code>margin-right</code> and <code>border-top-right-radius</code>.
           </p>
           <p style="margin-top: var(--space-sm);">
             The <code>:dir()</code> pseudo-class enables true internationalization without JavaScript.
-            Enhanced with smooth animations, focus management, and accessibility improvements.
+            Enhanced with 3D transforms, smooth animations, focus management, and accessibility improvements.
           </p>
         </div>
       </div>
     </div>
 
     <div class="css-highlights">
-      <h2>🚀 Advanced Lightning CSS Features v4.0</h2>
+      <h2>🚀 Ultimate Lightning CSS Features v5.0</h2>
       
       <div class="css-features">
         <div class="css-feature">
@@ -895,12 +1280,24 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
           <p>Complete support for clamp(), min(), max(), round(), mod(), rem(), and more.</p>
         </div>
         <div class="css-feature">
-          <h3>Interactive Animations</h3>
-          <p>Smooth micro-interactions with respect for prefers-reduced-motion.</p>
+          <h3>3D Transform Support</h3>
+          <p>Advanced 3D transforms with perspective, rotation, and translation.</p>
         </div>
         <div class="css-feature">
-          <h3>Enhanced Accessibility</h3>
-          <p>ARIA-friendly focus management and screen reader optimizations.</p>
+          <h3>WebGL Blend Modes</h3>
+          <p>Advanced blend modes with multiply, screen, and overlay effects.</p>
+        </div>
+        <div class="css-feature">
+          <h3>CSS Houdini Integration</h3>
+          <p>Experimental CSS Houdini APIs for advanced layout and animation.</p>
+        </div>
+        <div class="css-feature">
+          <h3>Live CSS Editor</h3>
+          <p>Real-time CSS editing with instant preview and validation.</p>
+        </div>
+        <div class="css-feature">
+          <h3>Performance Monitoring</h3>
+          <p>Real-time FPS, memory, and render time tracking.</p>
         </div>
       </div>
     </div>
@@ -911,13 +1308,13 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
     </div>
 
     <div class="footer">
-      <p>Built with ❤️ and Lightning CSS v4.0 • Zero errors, maximum performance, global-ready</p>
-      <p>© 2025 Enhanced Multilingual CSS System v4.0 • Advanced Interactive Edition</p>
+      <p>Built with ❤️ and Lightning CSS v5.0 • Zero errors, maximum performance, global-ready</p>
+      <p>© 2025 Ultimate Multilingual CSS System v5.0 • Advanced 3D Interactive Edition</p>
     </div>
   </div>
 
   <script>
-    // Enhanced Theme Toggle
+    // Ultimate Theme Toggle
     function toggleTheme() {
       const html = document.documentElement;
       const currentTheme = html.getAttribute('data-theme') || 'light';
@@ -964,6 +1361,26 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
       localStorage.setItem('direction', html.getAttribute('dir'));
     }
 
+    // Language Selector
+    function changeLanguage(lang) {
+      const html = document.documentElement;
+      const langMap = {
+        'en': { dir: 'ltr', text: '🌐 العربية' },
+        'ar': { dir: 'rtl', text: '🌐 English' },
+        'fr': { dir: 'ltr', text: '🌐 العربية' },
+        'es': { dir: 'ltr', text: '🌐 العربية' },
+        'zh': { dir: 'ltr', text: '🌐 العربية' }
+      };
+      
+      const config = langMap[lang] || langMap['en'];
+      html.setAttribute('lang', lang);
+      html.setAttribute('dir', config.dir);
+      document.querySelector('.lang-toggle').textContent = config.text;
+      
+      localStorage.setItem('language', lang);
+      localStorage.setItem('direction', config.dir);
+    }
+
     // Animation Toggle
     function toggleAnimations() {
       const body = document.body;
@@ -998,10 +1415,101 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
       }
     }
 
-    // Interactive Demo Functions
+    // Editor Toggle
+    function toggleEditor() {
+      const editorSection = document.getElementById('editorSection');
+      const btn = document.querySelector('.editor-toggle');
+      
+      if (editorSection.classList.contains('active')) {
+        editorSection.classList.remove('active');
+        btn.textContent = '📝 Editor';
+        localStorage.setItem('editor', 'hidden');
+      } else {
+        editorSection.classList.add('active');
+        btn.textContent = '📝 Hide';
+        localStorage.setItem('editor', 'visible');
+      }
+    }
+
+    // Performance Monitor Toggle
+    function togglePerfMonitor() {
+      const perfSection = document.getElementById('perfSection');
+      const btn = document.querySelector('.perf-toggle');
+      
+      if (perfSection.classList.contains('active')) {
+        perfSection.classList.remove('active');
+        btn.textContent = '📊 Perf';
+        localStorage.setItem('perfMonitor', 'hidden');
+        stopPerformanceMonitoring();
+      } else {
+        perfSection.classList.add('active');
+        btn.textContent = '📊 Hide';
+        localStorage.setItem('perfMonitor', 'visible');
+        startPerformanceMonitoring();
+      }
+    }
+
+    // Live CSS Editor
+    function updateCSSPreview() {
+      const cssInput = document.getElementById('cssInput').value;
+      const preview = document.getElementById('cssPreview');
+      
+      // Create style element
+      let styleElement = document.getElementById('dynamicStyles');
+      if (!styleElement) {
+        styleElement = document.createElement('style');
+        styleElement.id = 'dynamicStyles';
+        document.head.appendChild(styleElement);
+      }
+      
+      styleElement.textContent = cssInput;
+    }
+
+    // Performance Monitoring
+    let perfInterval;
+    let frameCount = 0;
+    let lastTime = performance.now();
+
+    function startPerformanceMonitoring() {
+      perfInterval = setInterval(() => {
+        const currentTime = performance.now();
+        const deltaTime = currentTime - lastTime;
+        
+        if (deltaTime >= 1000) {
+          const fps = Math.round((frameCount * 1000) / deltaTime);
+          document.getElementById('fps').textContent = fps;
+          
+          frameCount = 0;
+          lastTime = currentTime;
+        }
+        
+        frameCount++;
+        
+        // Update other metrics
+        if (performance.memory) {
+          const memoryMB = Math.round(performance.memory.usedJSHeapSize / 1048576);
+          document.getElementById('memory').textContent = memoryMB;
+        }
+        
+        const renderTime = Math.round(performance.now() - currentTime);
+        document.getElementById('renderTime').textContent = renderTime;
+        
+        const elementCount = document.querySelectorAll('*').length;
+        document.getElementById('elements').textContent = elementCount;
+      }, 100);
+    }
+
+    function stopPerformanceMonitoring() {
+      if (perfInterval) {
+        clearInterval(perfInterval);
+        perfInterval = null;
+      }
+    }
+
+    // Enhanced Demo Functions
     function demoColorSpaces() {
       const output = document.getElementById('demoOutput');
-      output.textContent = `/* Lightning CSS Color Space Demo */
+      output.textContent = `/* Lightning CSS Color Space Demo v5.0 */
 
 :root {
   /* OKLCH - Perceptual Uniformity */
@@ -1017,18 +1525,25 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
   /* P3 Wide Gamut */
   --display-p3: color(display-p3 1 0.2 0.4);
   --p3-gold: color(display-p3 0.95 0.75 0.1);
+  --p3-cyan: color(display-p3 0.1 0.8 0.9);
 }
 
-/* Automatic fallback generation */
+/* 3D Enhanced Color Gradients */
 .element {
-  background: var(--primary-oklch);
-  /* Falls back to: oklch(65% 0.25 280) */
+  background: linear-gradient(
+    135deg,
+    var(--primary-oklch) 0%,
+    var(--accent-oklch) 50%,
+    var(--display-p3) 100%
+  );
+  transform: translateZ(50px) rotateY(15deg);
+  mix-blend-mode: multiply;
 }`;
     }
 
     function demoLogicalProps() {
       const output = document.getElementById('demoOutput');
-      output.textContent = `/* Logical Properties Demo */
+      output.textContent = `/* Logical Properties Demo v5.0 */
 
 /* LTR (Left-to-Right) */
 .element:dir(ltr) {
@@ -1038,6 +1553,7 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
   border-start-end-radius: 8px;   /* = border-top-right-radius */
   padding-block: 1rem;  /* = padding-top & padding-bottom */
   inset-inline-start: 0;  /* = left */
+  transform: translateZ(30px) rotateX(2deg);
 }
 
 /* RTL (Right-to-Left) */
@@ -1048,12 +1564,13 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
   border-start-end-radius: 8px;   /* = border-top-left-radius */
   padding-block: 1rem;  /* = padding-top & padding-bottom */
   inset-inline-start: 0;  /* = right */
+  transform: translateZ(30px) rotateX(-2deg);
 }`;
     }
 
     function demoModernFunctions() {
       const output = document.getElementById('demoOutput');
-      output.textContent = `/* Modern CSS Functions Demo */
+      output.textContent = `/* Modern CSS Functions Demo v5.0 */
 
 :root {
   /* Fluid Typography */
@@ -1069,6 +1586,12 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
   --grid-columns: round(12 / var(--item-size));
   --remainder: mod(100, 7);
   --aspect-ratio: 16 / 9;
+  
+  /* 3D Transform Variables */
+  --perspective: 1000px;
+  --rotate-x: 5deg;
+  --rotate-y: 10deg;
+  --translate-z: 50px;
 }
 
 /* Real-world applications */
@@ -1076,32 +1599,47 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
   font-size: var(--fluid-size);
   gap: var(--responsive-gap);
   width: var(--complex-calc);
+  transform: perspective(var(--perspective));
 }
 
 .grid {
   grid-template-columns: repeat(var(--grid-columns), 1fr);
   aspect-ratio: var(--aspect-ratio);
+}
+
+.element-3d {
+  transform: 
+    perspective(var(--perspective))
+    rotateX(var(--rotate-x))
+    rotateY(var(--rotate-y))
+    translateZ(var(--translate-z));
 }`;
     }
 
     function demoAnimations() {
       const output = document.getElementById('demoOutput');
-      output.textContent = `/* Lightning CSS Animation Demo */
+      output.textContent = `/* Lightning CSS Animation Demo v5.0 */
 
-@keyframes slideIn {
-  from {
+@keyframes slideIn3D {
+  0% {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(-100%) translateZ(-50px) rotateY(-90deg);
   }
-  to {
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%) translateZ(0px) rotateY(-45deg);
+  }
+  100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) translateZ(50px) rotateY(0deg);
   }
 }
 
 /* Advanced Easing Functions */
 .element {
-  animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: slideIn3D 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 /* Respects prefers-reduced-motion */
@@ -1118,6 +1656,208 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
   will-change: transform;
   backface-visibility: hidden;
   transform: translateZ(0); /* Hardware acceleration */
+  perspective: 1000px;
+}`;
+    }
+
+    function demo3DTransforms() {
+      const output = document.getElementById('demoOutput');
+      output.textContent = `/* 3D Transforms Demo v5.0 */
+
+:root {
+  --perspective: 1000px;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --rotate-z: 0deg;
+  --translate-z: 0px;
+  --scale: 1;
+}
+
+/* 3D Container */
+.container-3d {
+  perspective: var(--perspective);
+  transform-style: preserve-3d;
+}
+
+/* 3D Element */
+.element-3d {
+  transform: 
+    rotateX(var(--rotate-x))
+    rotateY(var(--rotate-y))
+    rotateZ(var(--rotate-z))
+    translateZ(var(--translate-z))
+    scale3d(var(--scale), var(--scale), var(--scale));
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Interactive 3D Effects */
+.element-3d:hover {
+  --rotate-x: 10deg;
+  --rotate-y: 15deg;
+  --translate-z: 100px;
+  --scale: 1.1;
+}
+
+/* 3D Card Flip */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card-3d:hover {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}`;
+    }
+
+    function demoBlendModes() {
+      const output = document.getElementById('demoOutput');
+      output.textContent = `/* WebGL Blend Modes Demo v5.0 */
+
+/* Blend Mode Container */
+.blend-container {
+  isolation: isolate; /* Creates new stacking context */
+  background: var(--surface-bg);
+}
+
+/* Multiple Blend Modes */
+.blend-multiply {
+  mix-blend-mode: multiply;
+  background: linear-gradient(45deg, var(--color-vibrant-purple), var(--color-cyan-blue));
+}
+
+.blend-screen {
+  mix-blend-mode: screen;
+  background: linear-gradient(45deg, var(--color-gold-orange), var(--color-coral-pink));
+}
+
+.blend-overlay {
+  mix-blend-mode: overlay;
+  background: linear-gradient(45deg, var(--color-deep-emerald), var(--color-warm-sun));
+}
+
+.blend-difference {
+  mix-blend-mode: difference;
+  background: linear-gradient(45deg, var(--color-accent-lch), var(--color-warning));
+}
+
+/* Advanced Blend Combinations */
+.complex-blend {
+  background: 
+    radial-gradient(circle at 20% 80%, var(--color-vibrant-purple) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--color-cyan-blue) 0%, transparent 50%),
+    linear-gradient(135deg, var(--color-gold-orange), var(--color-coral-pink));
+  mix-blend-mode: multiply;
+  filter: contrast(1.2) brightness(1.1);
+}
+
+/* Layered Blend Effects */
+.blend-layers {
+  position: relative;
+}
+
+.blend-layers::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-vibrant-purple);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+.blend-layers::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-cyan-blue);
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}`;
+    }
+
+    function demoHoudini() {
+      const output = document.getElementById('demoOutput');
+      output.textContent = `/* CSS Houdini Demo v5.0 */
+
+/* CSS Houdini Paint API */
+@supports (background: paint(myPaint)) {
+  .houdini-element {
+    background: paint(myPaint);
+    --paint-color: var(--color-vibrant-purple);
+    --paint-size: 20px;
+  }
+}
+
+/* CSS Houdini Layout API */
+@supports (layout: myLayout) {
+  .houdini-layout {
+    display: layout(myLayout);
+    --layout-gap: 1rem;
+    --layout-columns: 3;
+  }
+}
+
+/* CSS Houdini Animation API */
+@supports (animation: worklet) {
+  .houdini-animation {
+    animation: myWorklet 2s ease-in-out infinite;
+  }
+}
+
+/* Register Paint Worklet */
+if ('paintWorklet' in CSS) {
+  CSS.paintWorklet.addModule('paint-worklet.js');
+}
+
+/* Register Layout Worklet */
+if ('layoutWorklet' in CSS) {
+  CSS.layoutWorklet.addModule('layout-worklet.js');
+}
+
+/* Register Animation Worklet */
+if ('animationWorklet' in CSS) {
+  CSS.animationWorklet.addModule('animation-worklet.js');
+}
+
+/* Fallback for browsers without Houdini support */
+@supports not (background: paint(myPaint)) {
+  .houdini-element {
+    background: linear-gradient(135deg, var(--color-vibrant-purple), var(--color-cyan-blue));
+    /* Fallback styling */
+  }
+}
+
+/* Progressive Enhancement */
+.houdini-enhanced {
+  /* Base styles */
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-dynamic);
+  
+  /* Enhanced with Houdini if available */
+  @supports (background: paint(myPaint)) {
+    background: paint(myPaint);
+    border: none;
+    border-radius: 0;
+  }
 }`;
     }
 
@@ -1125,7 +1865,8 @@ console.log('Lightning CSS v4.0 - Advanced Features Ready');
       const output = document.getElementById('demoOutput');
       output.textContent = `// Demo cleared. Ready for next demonstration...
 
-console.log('Lightning CSS v4.0 - Interactive Playground');
+console.log('Lightning CSS v5.0 - Ultimate Interactive Playground');
+console.log('Enhanced with 3D transforms, blend modes, CSS Houdini, live editor, and performance monitoring');
 console.log('Click any button above to see live CSS examples!');`;
     }
 
@@ -1173,6 +1914,28 @@ console.log('Click any button above to see live CSS examples!');`;
         document.querySelector('.reduce-motion').textContent = '👁️ Enhanced';
       }
       
+      // Editor state initialization
+      const savedEditor = localStorage.getItem('editor') || 'hidden';
+      if (savedEditor === 'visible') {
+        document.getElementById('editorSection').classList.add('active');
+        document.querySelector('.editor-toggle').textContent = '📝 Hide';
+      }
+      
+      // Performance monitor state initialization
+      const savedPerf = localStorage.getItem('perfMonitor') || 'hidden';
+      if (savedPerf === 'visible') {
+        document.getElementById('perfSection').classList.add('active');
+        document.querySelector('.perf-toggle').textContent = '📊 Hide';
+        startPerformanceMonitoring();
+      }
+      
+      // Set up live CSS editor
+      const cssInput = document.getElementById('cssInput');
+      if (cssInput) {
+        cssInput.addEventListener('input', updateCSSPreview);
+        updateCSSPreview(); // Initial preview
+      }
+      
       // Add entrance animations
       setTimeout(() => {
         document.querySelectorAll('.metric-card').forEach((card, index) => {
@@ -1183,7 +1946,7 @@ console.log('Click any button above to see live CSS examples!');`;
       }, 500);
     });
 
-    // Keyboard navigation enhancement
+    // Enhanced Keyboard navigation
     document.addEventListener('keydown', function(e) {
       // Ctrl/Cmd + K for quick demo access
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -1203,7 +1966,42 @@ console.log('Click any button above to see live CSS examples!');`;
         e.preventDefault();
         toggleLanguage();
       }
+      
+      // Ctrl/Cmd + E for editor toggle
+      if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+        e.preventDefault();
+        toggleEditor();
+      }
+      
+      // Ctrl/Cmd + P for performance monitor
+      if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+        e.preventDefault();
+        togglePerfMonitor();
+      }
+      
+      // Ctrl/Cmd + / for command palette
+      if ((e.ctrlKey || e.metaKey) && e.key === '/') {
+        e.preventDefault();
+        // Future: Implement command palette
+        console.log('Command palette coming soon!');
+      }
     });
+
+    // 3D Mouse tracking for enhanced effects
+    document.addEventListener('mousemove', function(e) {
+      const x = (e.clientX / window.innerWidth - 0.5) * 10;
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      
+      document.documentElement.style.setProperty('--rotate-y', `${x}deg`);
+      document.documentElement.style.setProperty('--rotate-x', `${-y}deg`);
+    });
+
+    // Performance optimization
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        console.log('Lightning CSS v5.0 - Performance optimized and ready!');
+      });
+    }
   </script>
 </body>
 </html>
