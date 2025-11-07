@@ -530,11 +530,132 @@ The system processes millions of betting data feeds per day through this RCM-com
 - ✅ **Complete Audit Trail** for regulatory inspections
 - ✅ **Automated Policy Enforcement** with zero manual intervention
 
-**🎯 This RCM pipeline ensures the highest standards of regulatory compliance while maintaining enterprise-grade performance and real-time processing capabilities.**
+---
+
+## 🚀 Deployment
+
+### Enterprise Deployment Options
+
+The BPM system supports multiple deployment strategies for different enterprise requirements:
+
+#### 1. **GitHub Pages** (Documentation)
+Deploy the comprehensive enterprise documentation to GitHub Pages for public access.
+
+```bash
+# From bpm-source directory
+npm run build:docs          # Build documentation
+npm run deploy:github-pages # Deploy to GitHub Pages
+```
+
+#### 2. **Cloudflare Workers** (Application)
+Deploy the BPM application as a serverless function on Cloudflare Workers.
+
+```bash
+# From bpm-source directory
+npm run deploy:cloudflare   # Deploy application to Workers
+npm run deploy:cloudflare-pages # Deploy docs to Pages
+```
+
+#### 3. **Enterprise Deployment Script**
+Use the comprehensive deployment script for guided deployment:
+
+```bash
+# Run the enterprise deployment script
+./scripts/deploy.sh
+
+# Choose from:
+# 1) Setup GitHub Repository
+# 2) Deploy to GitHub Pages
+# 3) Deploy to Cloudflare
+# 4) Full Deployment (Both)
+# 5) Setup GitHub Pages Settings
+# 6) Preview Documentation Locally
+```
+
+### CI/CD Deployment
+
+#### GitHub Actions
+Automated deployment pipelines are configured for both platforms:
+
+- **`.github/workflows/deploy-docs.yml`** - GitHub Pages deployment
+- **`.github/workflows/deploy-cloudflare.yml`** - Cloudflare deployment
+
+#### Environment Variables Required
+
+For Cloudflare deployment, set these secrets in your GitHub repository:
+
+```bash
+CLOUDFLARE_API_TOKEN=your_api_token
+CLOUDFLARE_ACCOUNT_ID=your_account_id
+```
+
+### Production Deployment Architecture
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   GitHub Pages  │    │ Cloudflare Pages │    │ Cloudflare      │
+│   (Static Docs) │    │   (Static Docs)  │    │   Workers       │
+│                 │    │                  │    │   (API)         │
+│ • Documentation │    │ • Documentation  │    │ • BPM Runtime   │
+│ • Guides        │    │ • Guides         │    │ • RCM Pipeline  │
+│ • Benchmarks    │    │ • Benchmarks     │    │ • Policy Engine │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                                        │
+                                                        ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Enterprise    │    │   Private        │    │   Binary        │
+│   Registry      │    │   Registry       │    │   Registry      │
+│                 │    │                  │    │                 │
+│ • Package Mgmt  │    │ • Access Control │    │ • Distribution  │
+│ • Dependencies  │    │ • Authentication │    │ • Updates       │
+│ • Metadata      │    │ • Audit Logs     │    │ • Signing       │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+```
+
+### Deployment URLs
+
+After successful deployment, your BPM system will be available at:
+
+- **Documentation**: `https://[username].github.io/[repo-name]/`
+- **Cloudflare Pages**: `https://[project].pages.dev/`
+- **Cloudflare Workers**: `https://bpm.[your-domain].workers.dev/`
+- **Private Registry**: `https://registry.corp.com/bpm/`
+
+### Enterprise Deployment Checklist
+
+- [ ] **GitHub Repository** configured with remote origin
+- [ ] **GitHub Pages** enabled in repository settings
+- [ ] **Cloudflare Account** set up with API tokens
+- [ ] **Environment Variables** configured in CI/CD
+- [ ] **Domain Configuration** (optional for custom domains)
+- [ ] **SSL Certificates** (automatically handled by platforms)
+- [ ] **Monitoring** set up for production deployments
+- [ ] **Backup Strategy** for enterprise data
+
+### Monitoring & Maintenance
+
+#### Health Checks
+```bash
+# Check GitHub Pages deployment
+curl -f https://[username].github.io/[repo-name]/
+
+# Check Cloudflare deployment
+curl -f https://bpm.[your-domain].workers.dev/health
+
+# Check registry availability
+curl -f https://registry.corp.com/bpm/v3.0.0/
+```
+
+#### Performance Monitoring
+- **GitHub Pages**: Built-in analytics and performance insights
+- **Cloudflare**: Real-time analytics, security monitoring, performance metrics
+- **Custom Metrics**: BPM includes enterprise monitoring and alerting
+
+**🎯 Enterprise deployment ready - choose your platform and deploy with confidence!**
 
 ---
 
-## 🤝 Contributing
+## 🙏 Acknowledgments
 
 ### Development Setup
 
